@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<section class="genSec">
+    <main>
+        <h2>Small Talk</h2>
+        <div class="buttons">
+            <button type="button" class="logInButton">Log In</button>
+            <button type="button" class="signUpButton">Sign Up</button>
+
+        </div>
+    </main>
+    </section>
+<script>
+    const logInButton = document.querySelector('.logInButton')
+    const signUpButton = document.querySelector('.signUpButton')
+        
+    logInButton.addEventListener('click', ()=>{
+    location.href="{{ url_for('login') }}"
+    })
+    signUpButton.addEventListener('click', ()=>{
+        location.href="{{ url_for('signup') }}"
+    })
+</script>
+{% endblock %}
