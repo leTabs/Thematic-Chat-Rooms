@@ -3,11 +3,12 @@ import os
 #from datetime import timedelta
 from flask_socketio import join_room, leave_room, send, SocketIO
 from database import log, register, find_and_chat
+from chat_themes import themes
 import sqlite3
 
 
 app = Flask(__name__, static_folder='static')
-app.secret_key = os.urandom(6) 
+app.secret_key = os.urandom(6)
 #app.config['PERMANENT_SESSION_LIFE'] = timedelta(2)
 socketio = SocketIO(app)
 
@@ -67,7 +68,12 @@ def find_chat():
     if 'logged_in' not in session:
         return redirect(url_for('login'))
     username = session.get('username')
-    usernames = find_and_chat(username)
+    #usernames = find_and_chat(username) #ook at it later
+
+    usernames = []
+    for i in themes.values():
+        usernames.append(i)
+
     return render_template('findComv.html', usernames=usernames, username=username )
 #----------------------------------------------------------------------------
 @app.route('/chatting', methods=['GET'])
@@ -82,15 +88,9 @@ def chatting():
     receiver_info = receiver_info.split()
     receiver_id = receiver_info[0]
     receiver_name = receiver_info[1]
-
-    chat = ''
-    if receiver_id not in chats:
-        chat = user_id
-        session['chat'] = chat
-        chats[chat] = {"members": 0,  "messages":[]}
-    else:
-        session['chat'] = receiver_id
-
+    chat = receiver_id
+    session['chat'] = chat
+    chats[chat] = {"members": 0,  "messages":[]}
     return render_template('chatting.html', receiver_name=receiver_name, username=username)
 
 @socketio.on("message")
