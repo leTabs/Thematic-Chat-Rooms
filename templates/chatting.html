@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% block content %}
+    <section class="genSec">
+        <nav>
+            <h4>Chatting with {{reciever_name}}</h4>
+            
+            <button class="newChatButton">End Chat</button>
+        </nav>
+        <div class="messages" id="messages"></div>
+        <main>
+            <input type="text" placeholder="Type a message" name="message" id="message">
+            <button onClick="sendMessage()" name="send" type="button">Send</button>
+        </main>
+    </section>
+    <script type="text/javascript">
+        let socketio = io()
+        const messages  = document.getElementById('messages')
+
+        const createMessage = (username, msg) =>{
+            const content =`
+            <div class="text">
+                <span>
+                    <strong>${username}</strong>: ${msg}
+                </span>
+                <span class="muted">
+                    ${new Date().toLocaleString()}
+                </span>
+            </div>
+            `
+            messages.innerHTML += content
+        }
+        socketio.on('message', (data) =>{
+            createMessage(data.username, data.message)})
+
+        const sendMessage = () =>{
+            const message = document.getElementById("message");
+            if (message.value == "") return;
+            socketio.emit("message", { data: message.value });
+            message.value = "";}
+    </script>
+    {% for msg in messages %}
+    <script type="text/javascript">
+      createMessage("{{msg.username}}", "{{msg.message}}");
+    </script>
+    {% endfor %}
+{% endblock %}
