@@ -1,9 +1,10 @@
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, jsonify
 import os
-from flask_socketio import join_room, leave_room, send, SocketIO 
+#from datetime import timedelta
+from flask_socketio import join_room, leave_room, send, SocketIO
 from database import log, register, find_and_chat
 from chat_themes import themes
-import sqlite3
+import sqlite3,json
 
 
 app = Flask(__name__, static_folder='static')
@@ -88,12 +89,15 @@ def chatting():
     receiver_id = receiver_info[0]
     receiver_name = receiver_info[1]
     chat = receiver_id
-    session['chat'] = chat
+    session['chat'] = chat 
     chats[chat] = {"members": 0,  "messages":[]}
     return render_template('chatting.html', receiver_name=receiver_name, username=username)
 
+@app.route('/get_themes')
+def get_themes(): return jsonify(themes) 
+
 @socketio.on("message")
-def message(data):
+def message(data): 
     chat = session.get('chat')
     if chat not in chats: return
     content = {'username': session.get('username'), "message": data['data']}
