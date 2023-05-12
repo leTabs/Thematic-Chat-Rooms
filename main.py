@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, session
 import os
-#from datetime import timedelta
 from flask_socketio import join_room, leave_room, send, SocketIO 
 from database import log, register, find_and_chat
 from chat_themes import themes
