@@ -1,17 +1,17 @@
 {% extends 'base.html' %} {% block content %}
-<section class="genSec">
+<section class="genSec  bg-danger">
     <main>
-        <h2>Small Talk</h2>
-        <div class="buttons">
-            <button type="button" class="logInButton">Log In</button>
-            <button type="button" class="signUpButton">Sign Up</button>
+        <h2 class="text-center text-white">Small Talk</h2>
+        <div>
+            <button type="button" id="logInButton" class="btn-dark border-5 rounded-3">Log In</button>
+            <button type="button" id="signUpButton" class="btn-light">Sign Up</button>
 
         </div>
     </main>
     </section>
 <script>
-    const logInButton = document.querySelector('.logInButton')
-    const signUpButton = document.querySelector('.signUpButton')
+    const logInButton = document.querySelector('#logInButton')
+    const signUpButton = document.querySelector('#signUpButton')
         
     logInButton.addEventListener('click', ()=>{
     location.href="{{ url_for('login') }}"
