@@ -6,7 +6,7 @@ from database import log, register, find_and_chat
 from chat_themes import themes
 import sqlite3,json
 
-
+ 
 app = Flask(__name__, static_folder='static')
 app.secret_key = os.urandom(6)
 #app.config['PERMANENT_SESSION_LIFE'] = timedelta(2)
@@ -14,7 +14,7 @@ socketio = SocketIO(app)
 
 # utilities
 chats = {}
-#usernames = []
+#usernames = [] 
 
 
 # flask up routers
@@ -89,15 +89,15 @@ def chatting():
     receiver_id = receiver_info[0]
     receiver_name = receiver_info[1]
     chat = receiver_id
-    session['chat'] = chat 
+    session['chat'] = chat
     chats[chat] = {"members": 0,  "messages":[]}
     return render_template('chatting.html', receiver_name=receiver_name, username=username)
 
 @app.route('/get_themes')
-def get_themes(): return jsonify(themes) 
+def get_themes(): return jsonify(themes)
 
 @socketio.on("message")
-def message(data): 
+def message(data):
     chat = session.get('chat')
     if chat not in chats: return
     content = {'username': session.get('username'), "message": data['data']}
@@ -115,7 +115,7 @@ def connect(auth):
         return
     join_room(chat)
     send({'username': username, 'message': 'has entered the chat'}, to=chat)
-    chats[chat]['members'] += 1
+    chats[chat]['members'] += 1  
     print(f"{username} joined chat {chat}")
     print(chats[chat]['members'])
 
