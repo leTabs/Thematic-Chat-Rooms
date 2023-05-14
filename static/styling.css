@@ -1,4 +1,3 @@
-
 :root{
     --txt-color :  #F2EEE3;
     --navy: #2c003e;
@@ -83,4 +82,9 @@ input{
 }
 .error{
     color: white;
+    text-align: center;
+}
+.inForm{
+    display: flex;
+    justify-content: space-evenly;
 }
