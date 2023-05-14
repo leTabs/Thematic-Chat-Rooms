@@ -20,6 +20,7 @@ chats = {}
 # flask up routers
 @app.route('/')
 def index():
+    #session.clear()
     return render_template('index.html')
 @app.route('/login')
 def login():
@@ -32,6 +33,7 @@ def signup():
 @app.route('/logging', methods=['POST'])
 def logging():
     session.clear()
+    session['logged_in'] = False
     username = request.form['username']
     password = request.form['pass']
     result = log(username, password)
@@ -41,7 +43,7 @@ def logging():
     elif result == 'Unmatched':
         error = 'Invalid username or password'
         return render_template('logIn.html', error = error)
-    else:
+    else: 
         session['username'] = username
         session['logged_in'] = True
         return redirect(url_for('find_chat'))
@@ -56,27 +58,24 @@ def signing():
         return render_template('signUp.html', error=error)
     result = register(username, password)
 
-    if result == 'Unvailable_username':
+    if result == 'Unvailable_username': 
         error = 'Username already exists'
         return render_template('signUp.html', error = error)
-    else:
-        print('pip')
+    else: 
         return redirect(url_for('find_chat'))
 #------------------------------------------------------------------------
 @app.route('/find_chat', methods=['GET'])
-def find_chat():
+def find_chat(): 
     if 'logged_in' not in session:
-        return redirect(url_for('login'))
+        return redirect(url_for('login')) 
     username = session.get('username')
     #usernames = find_and_chat(username) #ook at it later
-
     usernames = []
     for i in themes.values():
-        usernames.append(i)
-
+        usernames.append(i) 
     return render_template('findComv.html', usernames=usernames, username=username )
 #----------------------------------------------------------------------------
-@app.route('/chatting', methods=['GET'])
+@app.route('/chatting', methods=['GET']) 
 def chatting():
     if 'logged_in' not in session:
         return redirect(url_for('login'))
@@ -92,7 +91,12 @@ def chatting():
     session['chat'] = chat
     chats[chat] = {"members": 0,  "messages":[]}
     return render_template('chatting.html', receiver_name=receiver_name, username=username)
-
+#---------------------------------------------------------------------
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
+#----------------------------------------------------------------------
 @app.route('/get_themes')
 def get_themes(): return jsonify(themes)
 
