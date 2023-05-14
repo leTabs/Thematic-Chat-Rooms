@@ -2,7 +2,7 @@
     <section class="genSec">
         <nav>
             <h4>Chatting about:<span class="theme">{{receiver_name}}</span></h4>
-            <button class="newChatButton">End Chat</button>
+            <button id="leaveChat">Leave Chat</button>
         </nav>
         
         <main class="chattingSection">
@@ -35,6 +35,11 @@
             if (message.value == "") return;
             socketio.emit("message", { data: message.value });
             message.value = "";}
+        
+                
+        document.getElementById('leaveChat').addEventListener('click', ()=>{
+            window.location = "{{url_for('find_chat')}}"
+        })
     </script>
     {% for msg in messages %}
     <script type="text/javascript">
