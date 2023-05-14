@@ -6,9 +6,7 @@
             <input type="text" name="username" id="username" placeholder="Name" autofocus/>
             <input type="password" name="pass" id="pass" placeholder="Password">
             {% if error %}
-            <ul>
-                <li class="error">{{error}}</li>
-            </ul>
+                <p class="error">{{error}}</p>
             {% endif %}
             <section class="inForm">
                 <button type="submit" class="log">Log in</button>
