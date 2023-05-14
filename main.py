@@ -71,7 +71,7 @@ def find_chat():
     username = session.get('username')
     #usernames = find_and_chat(username) #ook at it later
     usernames = []
-    for i in themes.values():
+    for i in themes.values(): 
         usernames.append(i) 
     return render_template('findComv.html', usernames=usernames, username=username )
 #----------------------------------------------------------------------------
