@@ -4,11 +4,13 @@
             <h4>Chatting about:<span class="theme">{{receiver_name}}</span></h4>
             <button class="newChatButton">End Chat</button>
         </nav>
-
+        
         <main class="chattingSection">
             <div class="messages" id="messages"></div>
-            <input type="text" placeholder="Type a message" name="message" id="message">
-            <button onClick="sendMessage()" name="send" type="button">Send</button>
+            <div class="sending">
+               <input type="text" placeholder="Type a message" name="message" id="message">
+               <button onClick="sendMessage()" name="send" type="button" class="send">Send</button>
+            </div>
         </main>
     </section>
     <script type="text/javascript">
@@ -18,8 +20,8 @@
         const createMessage = (username, msg) =>{
             const content =`
             <div class="text">
-                <span>
-                    <strong>${username}</strong>: ${msg}
+                <span class="fullMessage">
+                    <strong class="strong">${username}</strong>: ${msg}
                 </span>
             </div>
             `
