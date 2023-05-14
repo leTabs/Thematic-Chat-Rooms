@@ -3,7 +3,7 @@
     <h3>Register</h3>
     <main>
         <form method="post" action="/signing">
-            <input type="text" name="username" id="username" placeholder="Name" required>
+            <input type="text" name="username" id="username" placeholder="Name" required autofocus>
             <input type="password" name="password" id="password" placeholder="Password" required>
             <input type="password" name="password_confirm" id="password_confirm" placeholder="Repeat password" required>
             {% if error %}
@@ -11,10 +11,16 @@
             {% endif %}
             <section class="inForm">
                 <button type="submit" class="sign">Sing Up</button>
-                <button>Back</button>
+                <button type="button" id="back">Back</button>
             </section>
         </form>
 
     </main>
     </section>
+    <script type="text/javascript">
+        let back = document.getElementById('back')
+        back.addEventListener('click', ()=>{
+            window.location = "/"
+        })
+    </script>
     {% endblock %}
