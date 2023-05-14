@@ -10,10 +10,15 @@
             {% endif %}
             <section class="inForm">
                 <button type="submit" class="log">Log in</button>
-                <button>Back</button>
+                <button type="button" id="back">Back</button>
             </section>
         </form>
-
     </main>
     </section>
+    <script type="text/javascript">
+        let back = document.getElementById('back')
+        back.addEventListener('click', ()=>{
+            window.location = "/"
+        })
+    </script>
 {% endblock %}
