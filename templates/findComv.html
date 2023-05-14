@@ -17,9 +17,16 @@
             <div class="request">
             </div>
         </main>
-        <section class="profile">
-            <p class="user" data-value="{{username}}">{{username}}</p>
-            <button class="viewProfile">View Profile</button>
-        </section>
+        <form action="{{ url_for('logout') }}" method="POST">
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+        
     </section>
+
+    <script type="text/javascript">
+        let back = document.getElementById('back')
+        back.addEventListener('click', ()=>{
+            window.location = "{{ url_for('login') }}"
+        })
+    </script>
 {% endblock %}
