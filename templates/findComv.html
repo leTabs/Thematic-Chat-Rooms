@@ -18,14 +18,14 @@
             </div>
         </main>
         <form action="{{ url_for('logout') }}" method="POST">
-            <button type="submit" class="btn btn-primary">Logout</button>
+            <button type="submit" id="logout">Logout</button>
         </form>
         
     </section>
 
     <script type="text/javascript">
-        let back = document.getElementById('back')
-        back.addEventListener('click', ()=>{
+        let back = document.getElementById('logout')
+        logout.addEventListener('click', ()=>{
             window.location = "{{ url_for('login') }}"
         })
     </script>
