@@ -1,20 +1,18 @@
 {% extends 'base.html'%} {% block content %}
     <section class="genSec">
-        <h3>Find Someone to Talk</h3>
+        <h3>Find a Theme</h3>
         <main>
-            <input type="search" name="searching" id="searching" placeholder="Looking for...">
-            <button class="go">Go</button>
-            <section class="usersSections">
-                <div>
-                <form method="get"  acttion="{{url_for('find_chat')}}" action="{{url_for('chatting')}}">
-                    {% for user in usernames %}
-                    <p class="onlineUsers">{{ loop.index }}) {{user}} <span>...</span>
-                    <button type="submit" class="talkButton" name="reciever" value="{{ loop.index }} {{user}}">
-                        Talk
-                    </button></p>
-                    {% endfor %}
-                </form>
-            </div>
+            <section>
+                <div >
+                    <form method="get"  acttion="{{url_for('find_chat')}}" action="{{url_for('chatting')}}" class="themes">
+                        {% for user in usernames %}
+                        <p class="currentThemes"><span>{{ loop.index }}) {{user}}</span>
+                        <button type="submit" class="talkButton" name="reciever" value="{{ loop.index }} {{user}}">
+                            Join
+                        </button></p>
+                        {% endfor %}
+                    </form>
+                </div>
             </section>
             <div class="request">
             </div>
@@ -25,6 +23,3 @@
         </section>
     </section>
 {% endblock %}
-
-<!-- action="{{url_for('chat')}}" append to line 9  -->
-<!-- usernames to user,user to usernames -->
