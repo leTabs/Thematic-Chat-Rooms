@@ -34,7 +34,7 @@ h3{
     font-size: 3rem;
     text-align: center;
 }
-.buttons, .inputs{
+.buttons{
     margin: auto;
     width: 50%;
     display: flex;
@@ -117,3 +117,50 @@ h4{
     font-size: 2.5rem;
 }
 .theme{color: white;}
+.text{
+    font-size: 1.2rem;
+    width: 80%;
+    color: white;
+    padding:0;
+    margin: 1.5rem 0.5rem;
+}
+.strong{
+    color:cyan;
+}
+.fullMessage{
+    border-radius: 3px;
+    /* background-color: #0dc0c3; */
+    border-bottom: solid white 1px;
+}
+.sending{
+    display: flex;
+    justify-content: space-between;
+    /* position: relative; */
+    /* top: 65%; */
+    border: solid red;
+    width: auto;
+    margin: 0, auto;
+}
+.chattingSection{
+    height: 50vh
+}
+.messages{
+    padding:0;
+    margin-top: 0;;
+    overflow-y: scroll;
+    overflow-x: auto;
+    background-color: rgb(110, 0, 18);
+    height: 40vh;
+    width:auto;
+    margin-bottom: 2rem;
+}
+#message{
+    width: 100%;
+    margin-left:1rem;
+    margin-right: 1rem;
+}
+.send{
+    margin: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
