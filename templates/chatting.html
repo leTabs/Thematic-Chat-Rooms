@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% block content %}
     <section class="genSec">
         <nav>
-            <h4>Chatting with {{reciever_name}}</h4>
-            
+            <h4>Chatting about:<span class="theme">{{receiver_name}}</span></h4>
             <button class="newChatButton">End Chat</button>
         </nav>
-        <div class="messages" id="messages"></div>
-        <main>
+
+        <main class="chattingSection">
+            <div class="messages" id="messages"></div>
             <input type="text" placeholder="Type a message" name="message" id="message">
             <button onClick="sendMessage()" name="send" type="button">Send</button>
         </main>
