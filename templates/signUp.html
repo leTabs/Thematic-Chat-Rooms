@@ -6,16 +6,17 @@
             <input type="text" name="username" id="username" placeholder="Name" required>
             <input type="password" name="password" id="password" placeholder="Password" required>
             <input type="password" name="password_confirm" id="password_confirm" placeholder="Repeat password" required>
+            {% if error %}
+            <ul>
+                <li class="error">{{error}}</li>
+            </ul>
+            {% endif %}
             <section class="inForm">
                 <button type="submit" class="sign">Sing Up</button>
                 <button>Back</button>
             </section>
         </form>
-        {% if error %}
-        <ul>
-            <li>{{error}}</li>
-        </ul>
-    {% endif %}
+
     </main>
     </section>
     {% endblock %}
