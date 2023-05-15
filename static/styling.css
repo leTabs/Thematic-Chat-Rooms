@@ -4,6 +4,15 @@
     --light-blue: #512b58;
     --pink: #fe346e;
     --tealish: #d2fafb;
+    /*  */
+    --high-pink: #f70776;
+    --mid-pink: #c3195d; 
+    --dark-purple:  #4c0434; 
+    --dark: rgb(18, 0, 25);
+    --black:black;
+    --white: white;
+    --light: cyan;
+    --bg-frame-clr: #1c0623;
 }
 *{
     font-family: sans-serif
@@ -18,18 +27,19 @@ html *{
 .genSec{
     width:100vw;
     height: 100vh;
-    background-image: linear-gradient(160deg, var(--light-blue) 0%, var(--navy) 100%);
+    background-image: linear-gradient(160deg, var(--dark-purple) 12%,var(--dark) 25%,
+    var(--dark) 50%,   var(--dark-purple) 90%, var(--dark));
 }
 h2{
     padding-top: 14rem;
     margin-bottom: 5rem;
     text-align: center;
     font-size:6rem;
-    color:var(--tealish);
-    text-shadow: 3px 3px  5px black;
+    color:var(--white);
+    text-shadow: 3px 3px  15px var(--black);
 }
 h3{
-    color:var(--tealish);
+    color:var(--white);
     padding-top: 4rem;
     font-size: 3rem;
     text-align: center;
@@ -48,25 +58,27 @@ button{
     padding: 0.5rem;
     border-radius: 15px;
     outline: none;
-    border: var(--pink) solid 3px;
-    color:var(--tealish);
-    background-color: var(--pink);
+    border: var(--high-pink) solid 2.5px;
+    color:var(--white);
+    background-color: var(--high-pink);
     transition: 400ms;
+    white-space: nowrap;
 }
 button:hover{
     cursor: pointer;
-    background-color: white;
-    color: var(--mainColor01)
+    background-color: var(--white);
+    color: var(--black);
+    box-shadow: 3px 3px 3px 3px var(--black);
 }
 /* -> the whole form thingy */
 form, .chattingSection{
-    border: var(--pink) 1px solid;
+    border: #f2b3d2 1px solid;
     width: 50%;
     margin: 2rem auto;
     padding: 3rem 1rem;
     border-radius: 5px;
     box-shadow: 3px 3px 5px 5px black;
-    background-color:  var(--light-blue);
+    background-color:  var(--bg-frame-clr);
     filter: brightness(90%);
 }
 input{
@@ -82,7 +94,7 @@ input{
     padding:0.5rem
 }
 .error{
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
 }
 .inForm{
@@ -90,19 +102,33 @@ input{
     justify-content: space-evenly;
 }
 .themes{
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     height: 45vh;
+    padding:1rem;
 }
 .currentThemes{
-    color: cyan;
+    color: var(--light);
+    font-weight: bold;
     font-size: 1.5rem;
-    /* border: solid red; */
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    background-color: #2c003e;
+    justify-content: space-between;  
+    /* border: #f2b3d2 1px solid; */
+    border-bottom: solid white 0.5px;
+    /* background-color: rgb(66, 3, 44); */
+    background: transparent;
+    /* border-radius: 15px; */
+    padding:0;
     margin:0.2rem
+}
+.talkButton{
+    padding:0;
+    margin: 0;
+    font-size: 1.5rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
 }
 span, h4{
     margin: 1rem;
@@ -124,14 +150,29 @@ h4{
     padding:0;
     margin: 1.5rem 0.5rem;
 }
+hr{
+    margin-bottom: 1rem;
+}
 .strong{
     color:cyan;
+    background-color: #2c003e;
+    border-radius: 5px;
+    width: auto;
+    padding:0.2rem;
+    margin:0;
+    margin-bottom: 0.5rem;
 }
 .fullMessage{
+    display: inline;
+    padding:0;
+    margin:0;
     border-radius: 3px;
-    /* background-color: #0dc0c3; */
-    border-bottom: solid white 1px;
+    max-width: 10px ;
+    font-size: 1.5rem;
+    text-align: right;
+    background-color: red;
 }
+
 .sending{
     display: flex;
     justify-content: space-between;
@@ -147,8 +188,8 @@ h4{
 .messages{
     padding:0;
     margin-top: 0;;
-    overflow-y: scroll;
-    overflow-x: auto;
+    overflow-y: auto;
+    /* overflow-x: auto; */
     background-color: rgb(110, 0, 18);
     height: 40vh;
     width:auto;
@@ -163,4 +204,11 @@ h4{
     margin: 0;
     margin-left: 1rem;
     margin-right: 1rem;
+}
+nav{
+    background-color: blue;
+    width: 100vw;
+    border-bottom: solid red;
+    margin: 0;
+    padding: 0;
 }
