@@ -14,19 +14,30 @@
         </main>
     </section>
     <script type="text/javascript">
+
         let socketio = io()
         const messages  = document.getElementById('messages')
 
-        const createMessage = (username, msg) =>{
-            const content =`
-            <div class="text">
-                <span class="fullMessage">
-                    <strong class="strong">${username}</strong>: ${msg}
-                </span>
-            </div>
-            `
-            messages.innerHTML += content
-        } 
+
+    const createMessage = (username, msg) => {
+    const maxLength = 40; // Maximum characters per line
+    let formattedMsg = '';
+    for (let i = 0; i < msg.length; i += maxLength) {
+        formattedMsg += msg.substr(i, maxLength) + ' \n';
+    }
+
+    const content = `
+        <div class="text">
+            <hr>
+            <span class="strong">${username}</span><br>
+            <span class="fullMessage">${formattedMsg}</span>
+        </div>
+    `;
+    messages.innerHTML += content;
+}
+
+
+
         socketio.on('message', (data) =>{
             createMessage(data.username, data.message)})
 
