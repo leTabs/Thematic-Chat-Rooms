@@ -7,7 +7,7 @@
                     <form method="get"  acttion="{{url_for('find_chat')}}" action="{{url_for('chatting')}}" class="themes">
                         {% for user in usernames %}
                         <p class="currentThemes"><span>{{ loop.index }}) {{user}}</span>
-                        <button type="submit" class="talkButton" name="reciever" value="{{ loop.index }} {{user}}">
+                        <button type="submit" class="joinButton" name="reciever" value="{{ loop.index }} {{user}}">
                             Join
                         </button></p>
                         {% endfor %}
@@ -17,8 +17,8 @@
             <div class="request">
             </div>
         </main>
-        <form action="{{ url_for('logout') }}" method="POST">
-            <button type="submit" id="logout">Logout</button>
+        <form action="{{ url_for('logout') }}" method="POST" class="logoutForm">
+            <button type="submit" id="logout">Log Out</button>
         </form>
         
     </section>
