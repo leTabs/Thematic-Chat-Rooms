@@ -20,33 +20,33 @@
         const messages  = document.getElementById('messages')
 
         const scrollToBottom = () => {
-            messages.scrollTo({
+  messages.scrollTo({
     top: messages.scrollHeight,
     behavior: 'smooth'
   });
 };
 
-    const createMessage = (username, msg) => {
-    const maxLength = 40; 
-    let formattedMsg = '';
-    for (let i = 0; i < msg.length; i += maxLength) {
-        formattedMsg += msg.substr(i, maxLength) + ' \n';
-    }
+const createMessage = (username, msg) => {
+  const maxLength = 45; 
+  let formattedMsg = '';
+  for (let i = 0; i < msg.length; i += maxLength) {
+    formattedMsg += msg.substr(i, maxLength) + ' \n';
+  }
 
-    const isCurrentUser = username === "{{username}}";
-    const alignmentClass = isCurrentUser ? "username" : "other-user";
+  const isCurrentUser = username === "{{username}}";
+  const alignmentClass = isCurrentUser ? "username" : "other-user";
 
-    const content = `
-        <div class="text ${alignmentClass}">
-            <span class="{{username}} nick">${username}<hr></span>
-            <span class="fullMessage">${formattedMsg}</span>
-        </div>
-    `;
+  const content = `
+    <div class="text ${alignmentClass}">
+      <span class="nick">${username}</span><br>
+      <div class="textContent"><span class="fullMessage">${formattedMsg}</span></div>
+    </div>
+  `;
 
-    messages.innerHTML += content;
-    scrollToBottom();
-        
-}
+  messages.innerHTML += content;
+  scrollToBottom();
+};
+
     window.onload = scrollToBottom()
 
 
