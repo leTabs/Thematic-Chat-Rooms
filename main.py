@@ -51,12 +51,17 @@ def signing():
     username = request.form['username']
     password = request.form['password']
     password_confirm = request.form['password_confirm']
+    
     if confirm_key(password, password_confirm)[0]:
         error = confirm_key(password, password_confirm)[1]
         return render_template('signUp.html', error=error)
-    if valid_username(username)[0]: 
-        return render_template('signUp.html', error=valid_username(username)[1])
-         
+    elif valid_username(username)[0]: 
+        error = valid_username(username)[1]
+        return render_template('signUp.html', error=error)
+    elif valid_key(password)[0]:
+        error = valid_key(password)[1]
+        return render_template('signUp.html', error=error)
+    
     result = register(username, password)
     if result == 'Unvailable_username':
         error = 'Username already exists'
