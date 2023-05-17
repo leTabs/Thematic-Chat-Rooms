@@ -1,12 +1,10 @@
 from flask import Flask, render_template, redirect, url_for, request, session, jsonify
-import os
-#from datetime import timedelta
+import os , re
 from flask_socketio import join_room, leave_room, send, SocketIO
 from database import log, register, find_and_chat
 from chat_themes import themes
-import sqlite3,json
+from account_standard import valid_username, valid_key, confirm_key
 
- 
 app = Flask(__name__, static_folder='static')
 app.secret_key = os.urandom(6)
 #app.config['PERMANENT_SESSION_LIFE'] = timedelta(2)
@@ -14,7 +12,7 @@ socketio = SocketIO(app)
 
 # utilities
 chats = {}
-#usernames = [] 
+#usernames = []
 
 
 # flask up routers
@@ -43,7 +41,7 @@ def logging():
     elif result == 'Unmatched':
         error = 'Invalid username or password'
         return render_template('logIn.html', error = error)
-    else: 
+    else:
         session['username'] = username
         session['logged_in'] = True
         return redirect(url_for('find_chat'))
@@ -53,29 +51,31 @@ def signing():
     username = request.form['username']
     password = request.form['password']
     password_confirm = request.form['password_confirm']
-    if password != password_confirm:
-        error = 'The passwords don\'t match'
+    if confirm_key(password, password_confirm)[0]:
+        error = confirm_key(password, password_confirm)[1]
         return render_template('signUp.html', error=error)
+    if valid_username(username)[0]: 
+        return render_template('signUp.html', error=valid_username(username)[1])
+         
     result = register(username, password)
-
-    if result == 'Unvailable_username': 
+    if result == 'Unvailable_username':
         error = 'Username already exists'
         return render_template('signUp.html', error = error)
-    else: 
+    else:
         return redirect(url_for('find_chat'))
 #------------------------------------------------------------------------
 @app.route('/find_chat', methods=['GET'])
-def find_chat(): 
+def find_chat():
     if 'logged_in' not in session:
-        return redirect(url_for('login')) 
+        return redirect(url_for('login'))
     username = session.get('username')
     #usernames = find_and_chat(username) #ook at it later
     usernames = []
-    for i in themes.values(): 
-        usernames.append(i) 
+    for i in themes.values():
+        usernames.append(i)
     return render_template('findComv.html', usernames=usernames, username=username )
 #----------------------------------------------------------------------------
-@app.route('/chatting', methods=['GET']) 
+@app.route('/chatting', methods=['GET'])
 def chatting():
     if 'logged_in' not in session:
         return redirect(url_for('login'))
@@ -107,7 +107,7 @@ def message(data):
     content = {'username': session.get('username'), "message": data['data']}
     send(content, to=chat)
     chats[chat]['messages'].append(content)
-    print(f"{session.get('username')} said: {data['data']}")
+    #print(f"{session.get('username')} said: {data['data']}")
 
 @socketio.on('connect')
 def connect(auth):
@@ -119,9 +119,9 @@ def connect(auth):
         return
     join_room(chat)
     send({'username': username, 'message': 'has entered the chat'}, to=chat)
-    chats[chat]['members'] += 1  
-    print(f"{username} joined chat {chat}")
-    print(chats[chat]['members'])
+    chats[chat]['members'] += 1
+    #print(f"{username} joined chat {chat}")
+    #print(chats[chat]['members'])
 
 @socketio.on('disconnect')
 def disconnect():
