@@ -1,16 +1,15 @@
 <!-- {% block title %}Small Talk Themantic Chat Rooms|Log In{% endblock %} -->
 {% extends 'base.html' %} {% block content %}
-    <section class="genSec">
-    <h3>Log In</h3>
+    <section class="genSec d-flex justify-content-center">
     <main>
+        <h2>Log In</h2>
         <form method="post" action="logging">
-            <input type="text" name="username" id="username" placeholder="Name" autofocus/>
+            <input type="text" name="username" id="username" placeholder="Name" autofocus/><br>
             <input type="password" name="pass" id="pass" placeholder="Password">
             {% if error %}
-                
-                <p class="error"><span>--</span>{{error}}<span>--</span></p>
+                <p class="text-center text-white mt-1">{{error}}</p>
             {% endif %}
-            <section class="inForm">
+            <section class="d-flex justify-content-center">
                 <button type="submit" class="log">Log in</button>
                 <button type="button" id="back">Back</button>
             </section>
