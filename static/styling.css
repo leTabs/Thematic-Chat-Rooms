@@ -26,212 +26,138 @@
   }
 html{
     overflow: hidden;
+    
 }
 html *{
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
 }
 .genSec{
-    width:100vw;
-    height: 100vh;
     background-image: linear-gradient(160deg, var(--dark-purple) 12%,var(--dark) 25%,
     var(--dark) 50%,   var(--dark-purple) 90%, var(--dark));
+    width: 100vw;
+    height: 100vh
+}
+.small-talk{
+    font-size: 7rem;
 }
 h2{
-    padding-top: 14rem;
-    margin-bottom: 5rem;
-    font-size:6rem;
-    text-shadow: 3px 3px  15px var(--black);
-}
-h2, h3, #logout, button, h4, #leaveChat, .fullMessage{
-    color:var(--white)
+    font-size: 5rem;
+    color: white;
+    margin-top: 12rem
 }
 h3{
-    padding-top: 4rem;
     font-size: 3rem;
-}
-h2, h3, .error{
     text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    
 }
 .buttons{
-    margin: auto;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* border: white solid; */
+    padding:2rem
 }
 button{
-    width:7rem;
+    color: var(--white);
+    background-color:#f70776;
     font-size: 1.5rem;
-    margin: 1rem;
-    padding: 0.5rem;
+    width: 6rem;
+    min-height: 4rem;
+    margin:1rem;
     outline: none;
-    border: var(--high-pink) solid 2.5px;
-    background-color: var(--high-pink);
-    transition: 400ms;
-    white-space: nowrap;
-}
-button, form, .chattingSection, .joinButton, .logoutForm, .fullMessage, .username, .textContent{
+    border: solid 1px #f70776;
     border-radius: 15px;
+    transition: 400ms;
 }
 button:hover{
-    cursor: pointer;
-    color: var(--black);
+    color: #f70776;
+    background-color: white;
+
 }
-button:hover, #logout:hover, #leaveChat:hover{
-    background-color: var(--white);
-}
-form, .chattingSection, button:hover{
-    box-shadow: 3px 3px 5px 5px var(--black);
-}
-form, .chattingSection{
-    border: #f2b3d2 1px solid;
-    width: 50%;
-    margin: 2rem auto;
-    padding: 3rem 1rem;
-    background-color:  var(--bg-frame-clr);
+form{
+    border: solid white 1px;
+    border-radius: 5px;
+    width: 70vw;
+    padding: 1rem;
+
 }
 input{
-    display: block;
-    margin: 0.5rem auto;
-    width: 80%;
+    width:100%;
+    font-size: 1.5rem;
     background: transparent;
     border: none;
-    border-bottom: solid white 1px;
-    color: white;
     outline: none;
-    font-size:1.2rem;
-    padding:0.5rem
+    border-bottom: solid white 1px;
+    margin-top: 1rem;
+    color: white;
 }
-.error{
-    color: rgb(255, 255, 255);
-}
-.inForm{
-    display: flex;
-    justify-content: space-evenly;
-}
-.themes{
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 55vh;
-    padding:1rem;
-}
-.currentThemes{
-    font-weight: bold;
-    font-size: 1.5rem;
-    width: 100%;
-    border-bottom: solid white 0.5px;
-    background: transparent;
-    margin:0.2rem
-}
-.currentThemes, .theme, .username{
-    color: var(--light);
-}
-.currentThemes, nav, .sending {
-    display: flex;
-    justify-content: space-between;  
-}
-.currentThemes, .joinButton, .logoutForm, nav, .fullMessage, .messages, .send, .text{
-    padding: 0;
+h2{
+    text-align: center;
 }
 .joinButton{
     font-size: 1.5rem;
     width: 4rem;
-    height: 4rem;
+    min-height: 2rem;
+    margin:0;
 }
-.joinButton, #logout, nav, .fullMessage, .send, .username{
-    margin: 0;
+.themes{
+    height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.currentThemes{
+    width: 100%;
+    font-size: 1.7rem;
+    color: cyan;
+    margin:0.5rem;
+    padding: 0.5rem;
+    border-bottom: solid white 1px;
 }
 .logoutForm{
-    width:7rem;
-    border: none;
-    box-shadow: none;
-}
-#logout{
-    border-color: var(--light-blue);
-    filter:opacity(0.7)
-}
-#logout, #leaveChat{
-    background-color: var(--light-blue);
-}
-#logout:hover, #leaveChat:hover{
-    filter:opacity(1);
-    color: var(--light-blue)
-}
-span, h4{
-    margin: 1rem;
-    padding: 0.5rem;
-}
-h4{
-    font-size: 2.5rem;
-}
-nav{
-    border-bottom: var(--high-pink) solid 1px;
-    width: 100vw;
-    background-image: linear-gradient(160deg, var(--dark-purple) 12%,var(--dark-purple) 90%, var(--dark));
-}
-#leaveChat{
-    border-color: var(--light-blue);
-}
-hr{margin-top: 0.5rem;}
-
-.fullMessage{
-    display: inline;
-    max-width: 10px ;
-    font-size: 1.5rem;
-    text-align: right;
-}
-.textContent{
-    padding:0.5rem;
-    border: solid var(--high-pink) 1px;
-    margin-top: 0.5rem;
-}
-.sending{
-    width: auto;
-    margin: 0, auto;
-}
-.chattingSection{
-    height: 60vh
-}
-.messages{
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 50vh;
-    width:auto;
-    margin-bottom: 2rem;
-}
-.messages, .liner{
-    margin-top:  0;
-}
-.liner{
-    border-color: var(--high-pink);
-    margin-bottom: 0.5rem;
-}
-#message{
-    width: 100%; 
-    margin-left:1rem;
-    margin-right: 1rem;
-}
-.send{
-    margin-left: 1rem;
-    margin-right: 1rem;
     border: none
 }
-.username {
+#logout, #leaveChat{
+    background-color:#297f8b;
+    border-color: #297f8b;
+    color: white;
+}
+#logout:hover, #leaveChat:hover{
+    background-color:white;
+    color: black
+}
+nav{
+    /* border-bottom: solid white 1px; */
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
+.theme{
+    color: cyan
+}
+.messages{
+    height: 60vh;
+    color: white;
+    border: white solid 1px;
+    overflow: auto;
+    border-radius: 15px;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+.sending{
+    margin: 0.5rem
+}
+.send{
+    margin:0;
+}
+.username{
     text-align: right;
+    color: cyan
 }
 .other-user {
     color: rgb(128, 255, 0);
     text-align: left;
 }
-.text{
-    font-size: 1.5rem;
-    width: calc(100% - 1rem);
-    margin: 1.5rem 0.5rem;
-    height: auto;
-}
-.username{
-    padding:0.3rem;
-    margin-bottom: 0.5rem;
-    margin-right: 0.4rem;
+.text-message{
+    color: white;
 }
