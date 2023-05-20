@@ -1,16 +1,16 @@
 <!-- {% block title %}Small Talk Themantic Chat Rooms|Sign Up{% endblock %} -->
 {% extends 'base.html' %} {% block content %}
-<section class="genSec">
-    <h3>Register</h3>
+<section class="genSec d-flex justify-content-center">
     <main>
+        <h2>Register</h2>
         <form method="post" action="/signing">
             <input type="text" name="username" id="username" placeholder="Name" required autofocus>
             <input type="password" name="password" id="password" placeholder="Password" required>
             <input type="password" name="password_confirm" id="password_confirm" placeholder="Repeat password" required>
             {% if error %}
-                <p class="error"><span>--</span>{{error}}<span>--</span></p>
+                <p class="text-center text-white mt-1">{{error}}</p>
             {% endif %}
-            <section class="inForm">
+            <section class="d-flex justify-content-center">
                 <button type="submit" class="sign">Sing Up</button>
                 <button type="button" id="back">Back</button>
             </section>
