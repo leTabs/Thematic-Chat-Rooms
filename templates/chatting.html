@@ -1,15 +1,15 @@
 <!-- {% block title %}Small Talk Themantic Chat Rooms|{{receiver_name}} Chat{% endblock %} -->
 {% extends 'base.html' %} {% block content %}
-    <section class="genSec">
-        <nav>
-            <h4>Chatting about:<span class="theme">{{receiver_name}}</span></h4>
+    <section class="genSec d-flex justify-content-center">
+        <main>
+          <nav>
+            <h3 class="text-white">Chatting about:<span class="theme">{{receiver_name}}</span></h3>
             <button id="leaveChat">Leave</button>
         </nav>
-        
-        <main class="chattingSection">
+
             <div class="messages" id="messages"></div>
             <hr class="liner">
-            <div class="sending">
+            <div class="sending d-flex justify-content-sm-between">
                <input type="text" placeholder="Type a message" name="message" id="message" autofocus>
                <button onClick="sendMessage()" name="send" type="button" class="send">Send</button>
             </div>
@@ -40,7 +40,7 @@ const createMessage = (username, msg) => {
   const content = `
     <div class="text ${alignmentClass}">
       <span class="nick">${username}</span><br>
-      <div class="textContent"><span class="fullMessage">${formattedMsg}</span></div>
+      <div class="textContent"><span class="text-message">${formattedMsg}</span><hr></div>
     </div>
   `;
 
