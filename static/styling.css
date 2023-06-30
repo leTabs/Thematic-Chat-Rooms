@@ -78,6 +78,7 @@ main{
     width: 70%;
     color: var(--pop);
     text-align: left;
+    border-left: solid 5px;
 }
 .index-buttons{
     display: inline-block;
@@ -95,4 +96,10 @@ main{
     padding:0.5rem;
     outline: none;
     border-radius: 5px;
+    transition: 500ms;
+}
+.index-buttons button:hover{
+    background-color: var(--poop);
+    color:rgb(42, 0, 38);
+    cursor: pointer;
 }
