@@ -21,7 +21,7 @@
     overflow: hidden;
 }
 html{
-    background: linear-gradient(45deg, rgb(149, 228, 234)70%,rgb(27, 66, 75)70%);
+    background: linear-gradient(45deg, rgb(182, 238, 242)70%,rgb(4, 51, 94)70%);
 }
 main{
     width: 100vw;
@@ -33,26 +33,33 @@ main{
     padding: 4rem 2rem 1rem 3rem ;
 }
 .intro h2{
-    font-size: 4.5rem;
+    font-size: 4.8rem;
     /* border: solid red 1px; */
-    color: rgb(1, 8, 61);
+    color: rgb(8, 49, 56);
 }
 .intro p{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     /* border: solid red 1px; */
     padding: 0 2rem;
-    margin-left: 10rem;
+    margin-left: 5rem;
     margin-top: 3rem;
-    width: 60%;
+    width: 70%;
     color: rgb(9, 21, 111);
+    text-align: left;
 }
 .index-buttons{
     display: inline-block;
-    /* border: solid red 1px; */
-    /* width: 25%; */
     margin: 1rem 0 0 60%;
 }
 .index-buttons button{
     font-size: 1.5rem;
+    width: 7rem;
     margin:1rem;
+    margin-top: 3rem;
+    background-color: rgb(87, 19, 150);
+    border: rgb(87, 19, 150) solid 1px;
+    color: white;
+    padding:0.5rem;
+    outline: none;
+    border-radius: 5px;
 }
