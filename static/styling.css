@@ -23,14 +23,29 @@
 html{
     background: linear-gradient(45deg, rgb(182, 238, 242)70%,rgb(4, 51, 94)70%);
 }
+.index-nav{
+    position: absolute;
+    top:0;
+    width: 100%;
+    background-color:rgb(4, 51, 94);
+}
+.index-nav p{
+    font-size: 2rem;
+    padding:1.3rem;
+    margin-left: 3rem;
+    color: white;
+
+
+}
 main{
     width: 100vw;
     height: 100vh;
 }
 .intro{
     /* border: solid rgb(0, 72, 255) 1px; */
-    margin-top: 6rem;
+    margin-top: 8rem;
     padding: 4rem 2rem 1rem 3rem ;
+    text-shadow: 1px 1px 13px rgb(77, 135, 166) ;
 }
 .intro h2{
     font-size: 4.8rem;
