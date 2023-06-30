@@ -18,27 +18,37 @@
 *{
     padding:0;
     margin:0;
+    overflow: hidden;
 }
-
+html{
+    background: linear-gradient(45deg, rgb(149, 228, 234)70%,rgb(27, 66, 75)70%);
+}
+main{
+    width: 100vw;
+    height: 100vh;
+}
 .intro{
-    border: solid rgb(0, 72, 255) 1px;
+    /* border: solid rgb(0, 72, 255) 1px; */
     margin-top: 6rem;
-    padding: 4rem 2rem 1rem 4rem ;
+    padding: 4rem 2rem 1rem 3rem ;
 }
 .intro h2{
     font-size: 4.5rem;
-    border: solid red 1px;
+    /* border: solid red 1px; */
+    color: rgb(1, 8, 61);
 }
 .intro p{
     font-size: 1.3rem;
-    border: solid red 1px;
-    padding: 2rem;
+    /* border: solid red 1px; */
+    padding: 0 2rem;
     margin-left: 10rem;
     margin-top: 3rem;
+    width: 60%;
+    color: rgb(9, 21, 111);
 }
 .index-buttons{
     display: inline-block;
-    border: solid red 1px;
+    /* border: solid red 1px; */
     /* width: 25%; */
     margin: 1rem 0 0 60%;
 }
