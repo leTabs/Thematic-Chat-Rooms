@@ -37,23 +37,39 @@ html{
     justify-content: space-between ;
 }
 .index-nav p{
-    padding:1.3rem;
+    margin:1.3rem;
     display: inline-block;
 }
 .index-title{
     font-size: 2rem;
-    margin-left: 3rem;
+    padding-left: 3rem;
 }
 .index-nav div{
     display: inline;
     margin-right: 3rem;
 }
 .index-nav div p{
-    padding-top: 1.5rem;
+    margin-top: 1.5rem;
     font-size: 1.5rem;
     color: rgb(0, 18, 42);
 }
-
+.index-nav div p:last-child{
+    border: solid 1px black ;
+    margin: 0.6rem;
+    padding:0.6rem;
+    background-color: rgb(5, 52, 128);
+    color: rgb(13, 221, 221);
+    border: white;
+    color: white;
+    border-radius: 5px;
+    border: rgb(5, 52, 128) 1px solid;
+    transition: 500ms;
+}
+.index-nav div p:last-child:hover{
+    background-color: rgb(192, 238, 247);
+    /* background: transparent; */
+    color:rgb(5, 52, 128);
+}
 main{
     width: 100vw;
     height: 100vh;
