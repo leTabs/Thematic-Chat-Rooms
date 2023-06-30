@@ -13,8 +13,12 @@
   }
 */
 :root{
-    --poop:rgb(91, 168, 240);
-    --pop: rgb(5, 58, 74);
+    --light-blue: rgb(91, 168, 240);
+    --text-color: rgb(5, 58, 74);
+    --deep-blue: rgb(0, 18, 42);
+    --blue: rgb(5, 52, 128);
+    --deep-purple: rgb(42, 0, 38);
+    --light-purple: rgb(87, 19, 150);
 }
 *{
     font-family: sans-serif
@@ -25,13 +29,13 @@
     overflow: hidden;
 }
 html{
-    background: linear-gradient(45deg, rgb(107, 137, 156), rgb(244, 244, 244)70%,var(--poop)70%);
+    background: linear-gradient(45deg, rgb(107, 137, 156), rgb(244, 244, 244)70%,var(--light-blue)70%);
 }
 .index-nav{
     position: absolute;
     top:0;
     width: 100%;
-    background-color:var(--poop);
+    background-color:var(--light-blue);
     box-shadow: 3px 3px 23px 5px black ;
     display: flex;
     justify-content: space-between ;
@@ -51,48 +55,44 @@ html{
 .index-nav div p{
     margin-top: 1.5rem;
     font-size: 1.5rem;
-    color: rgb(0, 18, 42);
+    color: var(--deep-blue);
 }
 .index-nav div p:last-child{
     border: solid 1px black ;
     margin: 0.6rem;
     padding:0.6rem;
-    background-color: rgb(5, 52, 128);
+    background-color: var(--blue);
     color: rgb(13, 221, 221);
     border: white;
     color: white;
     border-radius: 5px;
-    border: rgb(5, 52, 128) 1px solid;
+    border: var(--blue) 1px solid;
     transition: 500ms;
 }
 .index-nav div p:last-child:hover{
     background-color: rgb(192, 238, 247);
     /* background: transparent; */
-    color:rgb(5, 52, 128);
+    color:var(--blue)
 }
 main{
     width: 100vw;
     height: 100vh;
 }
 .intro{
-    /* border: solid rgb(0, 72, 255) 1px; */
     margin-top: 12rem;
     padding: 4rem 2rem 1rem 3rem ;
-    /* text-shadow: 1px 1px 1px rgb(203, 12, 143); */
 }
 .intro h2{
     font-size: 4.8rem;
-    /* border: solid red 1px; */
-    color: var(--pop);
+    color: var(--text-color);
 }
 .intro p{
     font-size: 1.5rem;
-    /* border: solid red 1px; */
     padding: 0 2rem;
     margin-left: 5rem;
     margin-top: 3rem;
     width: 70%;
-    color: var(--pop);
+    color: var(--text-color);
     text-align: left;
     border-left: solid 5px;
 }
@@ -106,8 +106,8 @@ main{
     width: 7rem;
     margin:1rem;
     margin-top: 3rem;
-    background-color: rgb(87, 19, 150);
-    border: rgb(87, 19, 150) solid 1px;
+    background-color: var(--light-purple);
+    border: var(--light-purple) solid 1px;
     color: white;
     padding:0.5rem;
     outline: none;
@@ -115,7 +115,18 @@ main{
     transition: 500ms;
 }
 .index-buttons button:hover{
-    background-color: var(--poop);
-    color:rgb(42, 0, 38);
+    background-color: var(--light-blue);
+    color:var(--deep-purple);
     cursor: pointer;
+}
+/* Log in */
+
+.statement{
+    text-align: center;
+    font-size: 4rem;
+}
+.login{
+    border: solid red 1px;
+    width: 50%;
+    margin: auto;
 }
