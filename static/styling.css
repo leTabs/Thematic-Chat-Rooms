@@ -19,16 +19,24 @@
     background: #710249; 
   }
 */
-.index-main{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
+
 .intro{
-    
+    border: solid rgb(0, 72, 255) 1px;
+    margin-top: 4rem;
+    padding: 2rem;
 }
 .intro h2{
-    font-size: 3.5rem;
+    font-size: 4.5rem;
+    border: solid red 1px;
 }
 .intro p{
     font-size: 1.3rem;
+    border: solid red 1px;
+    padding: 2rem;
+    margin-left: 10rem;
+}
+.index-buttons{
+    border: solid red 1px;
+    width: 25%;
+    margin: 0 0 0 60%;
 }
