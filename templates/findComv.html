@@ -1,13 +1,20 @@
 <!-- {% block title %}Small Talk Themantic Chat Rooms|Find Chat Romm{% endblock %} -->
 {% extends 'base.html'%} {% block content %}
-    <section class="genSec d-flex justify-content-center">
+    <section>
+        <nav class="index-nav">
+            <p class="index-title"><b>Small Talk</b></p>
+            <div>
+                <p>Home</p>
+                <p>About</p>
+                <p>Contant</p>
+            </div>
+        </nav>
         <main>
-            <h3 class="text-white">Find a Theme to Talk About</h3> 
-            <section class="d-flex justify-content-center">
-                <div class="">
+            <h3 class="statement" style="margin-top: 7rem;">Find a Theme</h3> 
+            <section class="all-themes">
                     <form method="get"  acttion="{{url_for('find_chat')}}" action="{{url_for('chatting')}}" class="themes">
                         {% for user in usernames %}
-                        <p class="currentThemes d-flex justify-content-sm-between">
+                        <p>
                             <span>{{ loop.index }}) {{user}}</span>
                             <button type="submit" class="joinButton" name="reciever" value="{{ loop.index }} {{user}}">
                                 Join
@@ -15,12 +22,12 @@
                         </p>
                         {% endfor %}
                     </form>
-                </div>
             </section>
+            <!--  -->
             <div class="request">
             </div> 
             <!-- propbably don't need that = -->
-            <form action="{{ url_for('logout') }}" method="POST" class="logoutForm d-flex justify-content-center">
+            <form action="{{ url_for('logout') }}" method="POST">
                 <button type="submit" id="logout">Log Out</button>
             </form>
         </main>
