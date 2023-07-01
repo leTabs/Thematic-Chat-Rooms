@@ -156,3 +156,17 @@ main{
     text-align: center;
     padding: 0;
 }
+/* Themes  */
+.all-themes{
+    border: solid 1px red;
+    width: 60%;
+    margin: 0 auto;
+
+}
+.all-themes p{
+    border-bottom: solid purple 5px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 2rem;
+}
