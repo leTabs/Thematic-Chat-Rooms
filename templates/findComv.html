@@ -1,39 +1,192 @@
-<!-- {% block title %}Small Talk Themantic Chat Rooms|Find Chat Romm{% endblock %} -->
-{% extends 'base.html'%} {% block content %}
-    <section>
-        <nav class="index-nav">
-            <p class="index-title"><b>Small Talk</b></p>
-            <div>
-                <p>Home</p>
-                <p>About</p>
-                <p>Contant</p>
-            </div>
-        </nav>
-        <main>
-            <h3 class="statement" style="margin-top: 7rem;">Find a Theme</h3> 
-            <section class="all-themes">
-                    <form method="get"  acttion="{{url_for('find_chat')}}" action="{{url_for('chatting')}}" class="themes">
-                        {% for user in usernames %}
-                        <p>
-                            <span>{{ loop.index }}) {{user}}</span>
-                            <button type="submit" class="joinButton" name="reciever" value="{{ loop.index }} {{user}}">
-                                Join
-                            </button>
-                        </p>
-                        {% endfor %}
-                    </form>
-            </section>
-            <form action="{{ url_for('logout') }}" method="POST">
-                <button type="submit" id="logout">Log Out</button>
-            </form>
-        </main>
-        
-    </section>
 
-    <script type="text/javascript">
-        let back = document.getElementById('logout')
-        logout.addEventListener('click', ()=>{
-            window.location = "{{ url_for('login') }}"
-        })
-    </script>
-{% endblock %}
+::-webkit-scrollbar {
+    width: 5px;
+  }
+::-webkit-scrollbar-track {
+    background: #3527d4;
+  }
+::-webkit-scrollbar-thumb {
+    background: #010d4e;
+  }
+::-webkit-scrollbar-thumb:hover {
+    background: #1e0013; 
+  }
+:root{
+    --light-blue: rgb(91, 168, 240);
+    --text-color: rgb(5, 58, 74);
+    --deep-blue: rgb(0, 18, 42);
+    --blue: rgb(5, 52, 128);
+    --deep-purple: rgb(42, 0, 38);
+    --light-purple: rgb(87, 19, 150);
+}
+*{
+    font-family: sans-serif
+}
+*{
+    padding:0;
+    margin:0;
+    overflow: hidden;
+}
+html{
+    background: linear-gradient(45deg, rgb(107, 137, 156), rgb(244, 244, 244)70%,var(--light-blue)70%);
+}
+.index-nav{
+    position: absolute;
+    top:0;
+    width: 100%;
+    background-color:var(--light-blue);
+    box-shadow: 3px 3px 23px 5px black ;
+    display: flex;
+    justify-content: space-between ;
+}
+.index-nav p{
+    margin:1.3rem;
+    display: inline-block;
+}
+.index-title{
+    font-size: 2rem;
+    padding-left: 3rem;
+}
+.index-nav div{
+    display: inline;
+    margin-right: 3rem;
+}
+.index-nav div p{
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--deep-blue);
+}
+.index-nav div p:last-child{
+    border: solid 1px black ;
+    margin: 0.6rem;
+    padding:0.6rem;
+    background-color: var(--blue);
+    color: rgb(13, 221, 221);
+    border: white;
+    color: white;
+    border-radius: 5px;
+    border: var(--blue) 1px solid;
+    transition: 500ms;
+}
+
+.index-nav div p:last-child:hover, .all-themes button:hover{
+    background-color: rgb(192, 238, 247);
+    color:var(--blue);
+    cursor: pointer;
+}
+main{
+    width: 100vw;
+    height: 100vh;
+}
+.intro{
+    margin-top: 12rem;
+    padding: 4rem 2rem 1rem 3rem ;
+}
+.intro h2{
+    font-size: 4.8rem;
+    color: var(--text-color);
+}
+.intro p{
+    font-size: 1.5rem;
+    padding: 0 2rem;
+    margin-left: 5rem;
+    margin-top: 3rem;
+    width: 70%;
+    color: var(--text-color);
+    text-align: left;
+    border-left: solid 5px;
+}
+.index-buttons{
+    display: inline-block;
+    margin: 1rem 0 0 60%;
+    box-shadow: inset 1px 1px  10px  rgba(0, 0, 0, 0.5);
+}
+.index-buttons button , .entering button, #logout{
+    font-size: 1.5rem;
+    width: 7rem;
+    margin:1rem;
+    margin-top: 3rem;
+    background-color: var(--light-purple);
+    border: var(--light-purple) solid 1px;
+    color: white;
+    padding:0.5rem;
+    outline: none;
+    border-radius: 5px;
+    transition: 500ms;
+}
+.index-buttons button:hover, .entering-buttons button:hover, #logout:hover{
+    background-color: var(--light-blue);
+    color:var(--deep-purple);
+    cursor: pointer;
+}
+/* Log in */
+
+.statement{
+    text-align: center;
+    font-size: 4rem;
+    margin-top: 4rem;
+    color: var(--text-color)
+}
+.entering{
+    border: solid var(--deep-purple) 1px;
+    width: 50%;
+    margin: 3rem auto;
+    padding: 6rem 4rem 2rem 4rem;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px 3px black;
+}
+.entering input{
+    font-size: 1.7rem;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px var(--text-color);
+    outline: none;
+    margin-bottom: 2rem;
+    display: inline-block;
+    color: var(--deep-blue)
+}
+.entering p{
+    text-align: center;
+    font-size: 1.2rem ;
+}
+.entering-buttons{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+}
+/* Themes  */
+.all-themes{
+    border: solid 1px var(--deep-purple);
+    padding:1.5rem 0.5rem 1rem 0.5rem;
+    width: 60%;
+    margin: 2.5rem auto 0 auto;
+    height:45vh;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px black;
+    overflow-y: scroll;
+
+}
+.all-themes p{
+    border-bottom: solid var(--deep-blue) 1px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 2rem;
+}
+.all-themes button{
+    font-size: 1.2rem;
+    margin-bottom:0.5rem;
+    padding:0.5rem;
+    background-color: var(--blue);
+    color: rgb(13, 221, 221);
+    border: white;
+    color: white;
+    border-radius: 5px;
+    border: var(--blue) 1px solid;
+    transition: 500ms;
+}
+.logout{
+    text-align: center;
+}
