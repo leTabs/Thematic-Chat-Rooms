@@ -69,10 +69,11 @@ html{
     border: var(--blue) 1px solid;
     transition: 500ms;
 }
-.index-nav div p:last-child:hover{
+
+.index-nav div p:last-child:hover, .all-themes button:hover{
     background-color: rgb(192, 238, 247);
-    /* background: transparent; */
-    color:var(--blue)
+    color:var(--blue);
+    cursor: pointer;
 }
 main{
     width: 100vw;
@@ -101,7 +102,7 @@ main{
     margin: 1rem 0 0 60%;
     box-shadow: inset 1px 1px  10px  rgba(0, 0, 0, 0.5);
 }
-.index-buttons button , .entering button{
+.index-buttons button , .entering button, #logout{
     font-size: 1.5rem;
     width: 7rem;
     margin:1rem;
@@ -114,7 +115,7 @@ main{
     border-radius: 5px;
     transition: 500ms;
 }
-.index-buttons button:hover, .entering-buttons button:hover{
+.index-buttons button:hover, .entering-buttons button:hover, #logout:hover{
     background-color: var(--light-blue);
     color:var(--deep-purple);
     cursor: pointer;
@@ -164,9 +165,21 @@ main{
 
 }
 .all-themes p{
-    border-bottom: solid purple 5px;
+    border-bottom: solid var(--deep-blue) 1px;
     font-size: 2rem;
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 2rem;
+}
+.all-themes button{
+    font-size: 1.2rem;
+    margin-bottom:0.5rem;
+    padding:0.5rem;
+    background-color: var(--blue);
+    color: rgb(13, 221, 221);
+    border: white;
+    color: white;
+    border-radius: 5px;
+    border: var(--blue) 1px solid;
+    transition: 500ms;
 }
