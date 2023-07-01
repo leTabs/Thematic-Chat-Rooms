@@ -232,14 +232,14 @@ main{
     background-color: rgb(255, 255, 255);
 }
 .messaging{
-    border:solid 1px red;
+    border:solid 3px var(--deep-purple);
     margin: 8rem 1rem 1rem 1rem;
+    border-radius: 5px;
 }
 #messages{
     height: calc(100vh - 12rem)
 }
 .input-div{
-    border:solid 1px red;
     border-radius: 5px;
     display: grid;
     grid-template-columns: 7fr 1fr;
