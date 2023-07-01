@@ -159,9 +159,14 @@ main{
 }
 /* Themes  */
 .all-themes{
-    border: solid 1px red;
+    border: solid 1px var(--deep-purple);
+    padding:1.5rem 0.5rem 1rem 0.5rem;
     width: 60%;
-    margin: 0 auto;
+    margin: 2.5rem auto 0 auto;
+    height:45vh;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px 3px black;
+    overflow-y: scroll;
 
 }
 .all-themes p{
@@ -182,4 +187,7 @@ main{
     border-radius: 5px;
     border: var(--blue) 1px solid;
     transition: 500ms;
+}
+.logout{
+    text-align: center;
 }
