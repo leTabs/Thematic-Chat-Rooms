@@ -6,16 +6,16 @@
         <button id="leaveChat">Leave</button>
     </nav>
         <main>
-            <div class="messages" id="messages" style="margin-top: 8rem;"></div>
-            <hr>
-            <div>
-               <input type="text" placeholder="Type a message" name="message" id="message" autofocus>
-               <button onClick="sendMessage()" name="send" type="button" class="send">Send</button>
-            </div>
+          <section  class="messaging">
+              <div class="messages" id="messages" ></div>
+              <div class="input-div">
+                <input type="text" placeholder="Type a message" name="message" id="message" autofocus>
+                <button onClick="sendMessage()" name="send" type="button" class="send">Send</button>
+              </div>
+          </section>
         </main>
     </section>
     <script type="text/javascript">
-
         let socketio = io()
         const messages  = document.getElementById('messages')
 
@@ -39,7 +39,7 @@ const createMessage = (username, msg) => {
   const content = `
     <div class="text ${alignmentClass}">
       <span class="nick">${username}</span><br>
-      <div class="textContent"><span class="text-message">${formattedMsg}</span><hr></div>
+      <div class="textContent"><span class="text-message-${alignmentClass}">${formattedMsg}</span><hr></div>
     </div>
   `;
 
