@@ -1,15 +1,14 @@
 <!-- {% block title %}Small Talk Themantic Chat Rooms|{{receiver_name}} Chat{% endblock %} -->
 {% extends 'base.html' %} {% block content %}
-    <section class="genSec d-flex justify-content-center">
+    <section>
+      <nav class="index-nav">
+        <p class="index-title">Chatting about: <span class="theme">{{receiver_name}}</span></p>
+        <button id="leaveChat">Leave</button>
+    </nav>
         <main>
-          <nav>
-            <h3 class="text-white">Chatting about:<span class="theme">{{receiver_name}}</span></h3>
-            <button id="leaveChat">Leave</button>
-        </nav>
-
-            <div class="messages" id="messages"></div>
-            <hr class="liner">
-            <div class="sending d-flex justify-content-sm-between">
+            <div class="messages" id="messages" style="margin-top: 8rem;"></div>
+            <hr>
+            <div>
                <input type="text" placeholder="Type a message" name="message" id="message" autofocus>
                <button onClick="sendMessage()" name="send" type="button" class="send">Send</button>
             </div>
