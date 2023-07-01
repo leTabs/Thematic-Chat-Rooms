@@ -1,17 +1,16 @@
-/*
+
 ::-webkit-scrollbar {
     width: 5px;
   }
 ::-webkit-scrollbar-track {
-    background: #c372b0;
+    background: #3527d4;
   }
 ::-webkit-scrollbar-thumb {
-    background: #a9039e;
+    background: #010d4e;
   }
 ::-webkit-scrollbar-thumb:hover {
-    background: #710249; 
+    background: #1e0013; 
   }
-*/
 :root{
     --light-blue: rgb(91, 168, 240);
     --text-color: rgb(5, 58, 74);
@@ -70,7 +69,7 @@ html{
     transition: 500ms;
 }
 
-.index-nav div p:last-child:hover, .all-themes button:hover{
+.index-nav div p:last-child:hover, .all-themes button:hover, #leaveChat:hover{
     background-color: rgb(192, 238, 247);
     color:var(--blue);
     cursor: pointer;
@@ -190,4 +189,21 @@ main{
 }
 .logout{
     text-align: center;
+}
+/* chatting */
+.theme{
+    color: var(--light-purple)
+}
+#leaveChat{
+    margin:0.5rem 3rem;
+    font-size: 1.2rem;
+    /* margin-bottom:0.5rem; */
+    padding:0 1rem;
+    background-color: var(--blue);
+    color: rgb(13, 221, 221);
+    border: white;
+    color: white;
+    border-radius: 5px;
+    border: var(--blue) 1px solid;
+    transition: 500ms;
 }
