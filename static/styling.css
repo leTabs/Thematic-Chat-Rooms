@@ -69,7 +69,7 @@ html{
     transition: 500ms;
 }
 
-.index-nav div p:last-child:hover, .all-themes button:hover, #leaveChat:hover{
+.index-nav div p:last-child:hover, .all-themes button:hover, #leaveChat:hover, .input-div button:hover{
     background-color: rgb(192, 238, 247);
     color:var(--blue);
     cursor: pointer;
@@ -230,6 +230,7 @@ main{
 }
 .text-message-other-user{
     background-color: rgb(255, 255, 255);
+    color: var(--text-color)
 }
 .messaging{
     border:solid 3px var(--deep-purple);
@@ -245,16 +246,25 @@ main{
     display: grid;
     grid-template-columns: 7fr 1fr;
     padding-top: 0.5rem;
+    box-shadow: 5px -5px 30px black;
 }
 .input-div input, .input-div button{
     margin:0.5rem;
     font-size: 1.5rem;
+    outline: none;
 }
 .input-div input{
-    outline: none;
-    border: none;
-    border-bottom: solid black 1px;
-    background: rgba(39, 75, 220, 0.609);
+    border: solid var(--deep-blue) 3px;
     padding:0.5rem;
     font-size: 2rem;
+    border-radius: 5px;
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.598);
+}
+.input-div button{
+    transition: 500ms;
+    background-color: var(--light-purple);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid var(--light-purple)
 }
