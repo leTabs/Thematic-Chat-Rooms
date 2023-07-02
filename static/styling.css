@@ -269,3 +269,6 @@ main{
     border-radius: 5px;
     border: 1px solid var(--light-purple)
 }
+button{
+    box-shadow: 3px 3px 3px 1px black;
+}
