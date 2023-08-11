@@ -1,6 +1,9 @@
-import re
 
+import re
+# (regular expressions)
 #----------------------------------------------------------------------------------------
+# The funcion checks is the signing username is valid.
+# Returns feedback if not
 def valid_username(string):
     string = string.strip()
     error_cases = {
@@ -10,10 +13,11 @@ def valid_username(string):
     }
     for case in error_cases:
         if case:
-            return(True, error_cases[case] )
+            return(True, error_cases[case])
     return False,
-
 #----------------------------------------------------------------------------------------
+# The funcion checks is the signing password is valid.
+# Returns feedback if not
 def valid_key(key):
     key = key.strip()
     error_cases = {
@@ -28,6 +32,8 @@ def valid_key(key):
             return(True, error_cases[case])
     else: return False,
 #----------------------------------------------------------------------------------------
+# The function compares the two passwords.
+# Returns feedback if the passwords don't match
 def confirm_key(key, confirmed_key):
     if key != confirmed_key:
         return (True, 'The passwords don\'t match')
