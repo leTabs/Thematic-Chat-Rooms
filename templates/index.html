@@ -1,22 +1,30 @@
 <!-- {% block title %}Small Talk Themantic Chat Rooms{% endblock %} -->
+
+<!-- altering the base (app wrapper) to the index panel -->
 {% extends 'base.html' %} {% block content %}
-<section>
+
+    <!-- navigation bar -->
     <nav class="index-nav">
-        <p><b>Small Talk</b></p>
-    </nav>
-    <main>
-        <div class="intro">
-            <h2>Themantic Chatrooms</h2>
-            <p>Discover and engage in dynamic chatrooms tailored to your interests! 
-                This chatroom website brings like-minded individuals together for meaningful conversations.
-            </p>
-        </div>
+        <p class="index-title"><b>Small Talk</b></p>
         <div class="index-buttons">
+            <button class="preview">Preview</button>
+            <button class="about">About</button>
             <button type="button" id="logInButton">Log In</button>
             <button type="button" id="signUpButton">Sign Up</button>
         </div>
+    </nav>
+    <!-- main section -->
+    <main>
+        <div class="intro">
+            <h2>Themantic Chatrooms</h2>
+            <p>Discover and engage in dynamic chatrooms tailored to your interests! <br />
+                This chatroom website brings like-minded individuals together for meaningful conversations.
+            </p>
+        </div>
+        <hr class="index-hr"/>
     </main>
-    </section>
+
+    <!-- "Log in" & "Sign up" button destinations, Javascript inclusion -->
     <script>
         const logInButton = document.querySelector('#logInButton')
         const signUpButton = document.querySelector('#signUpButton')
