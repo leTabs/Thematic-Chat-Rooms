@@ -1,83 +1,96 @@
-<!-- {% block title %}Small Talk Themantic Chat Rooms|{{receiver_name}} Chat{% endblock %} -->
+<!-- {% block title %}Small Talk Themantic Chat Rooms|{{theme_name}} Chat{% endblock %} -->
+
+<!-- altering the base (app wrapper) to the chatting panel -->
 {% extends 'base.html' %} {% block content %}
     <section>
+      <!-- navigation bar -->
       <nav class="index-nav">
-        <p class="index-title">Chatting about: <span class="theme">{{receiver_name}}</span></p>
+        <p class="index-title">Chatting about: <span class="theme">{{theme_name}}</span></p>
         <button id="leaveChat">Leave</button>
-    </nav>
-        <main>
-          <section  class="messaging">
-              <div class="messages" id="messages" ></div>
-              <div class="input-div">
-                <input type="text" placeholder="Type a message" name="message" id="message" autofocus>
-                <button onClick="sendMessage()" name="send" type="button" class="send">Send</button>
-              </div>
+      </nav>
+      <!-- main section -->
+      <main>
+        <section  class="messaging">
+            <div class="messages" id="messages" ></div>
+            <div class="input-div">
+              <input type="text" placeholder="Type a message" name="message" id="message" autofocus>
+              <button onClick="sendMessage()" name="send" type="button" class="send">Send</button>
+            </div>
           </section>
         </main>
     </section>
-    <script type="text/javascript">
-        let socketio = io()
-        const messages  = document.getElementById('messages')
 
-        const scrollToBottom = () => {
-  messages.scrollTo({
-    top: messages.scrollHeight,
-    behavior: 'smooth'
-  });
-};
+  
+    <!-- Javascript inclusion -->
+    <script>
 
-const createMessage = (username, msg) => {
-  const maxLength = 45; 
-  let formattedMsg = '';
-  for (let i = 0; i < msg.length; i += maxLength) {
-    formattedMsg += msg.substr(i, maxLength) + ' \n';
-  }
+      // getting the empty messages div
+      const messages  = document.getElementById('messages')
+      // the function forces the chatting window to always scroll to the bottom
+      const scrollToBottom = () => {
+        messages.scrollTo({
+        top: messages.scrollHeight,
+        behavior: 'smooth'
+        });
+      };
+      
+      // include sockets
+      let socketio = io()
 
-  const isCurrentUser = username === "{{username}}";
-  const alignmentClass = isCurrentUser ? "username" : "other-user";
+      // the function is responsible for formatting the message and structuring the empty div
+      const createMessage = (username, msg) => {
+        // defining the message characteristics
+        const maxLength = 50; 
+        let formattedMsg = '';
+        for (let i = 0; i < msg.length; i += maxLength) {
+          formattedMsg += msg.substr(i, maxLength);
+        }
 
-  const content = `
-    <div class="text ${alignmentClass}">
-      <span class="nick">${username}</span><br>
-      <div class="textContent"><span class="text-message-${alignmentClass}">${formattedMsg}</span><hr></div>
-    </div>
-  `;
+      // defining the necessary variables for distinguishing the user from other users.
+      const isCurrentUser = username === "{{username}}";
+      const alignmentClass = isCurrentUser ? "username" : "other-user";
 
-  messages.innerHTML += content;
-  scrollToBottom();
-};
+      // the structure and content
+      const content = `
+        <div class="text ${alignmentClass}">
+          <span class="nick">${username}</span><br>
+          <div class="textContent"><span class="text-message-${alignmentClass}">${formattedMsg}</span><hr></div>
+        </div>
+      `;
 
-    window.onload = scrollToBottom()
+      messages.innerHTML += content;
+      scrollToBottom();
+};  
+      // handling the message transfer
+      socketio.on('message', (data) =>{
+        createMessage(data.username, data.message)})
+          const messageInput = document.getElementById('message');
+          const sendMessage = () =>{
+          const message = messageInput.value;
+          if (message.trim() === ""){return};
 
-
-        socketio.on('message', (data) =>{
-            createMessage(data.username, data.message)})
-
-            const messageInput = document.getElementById('message');
-        
-            const sendMessage = () =>{
-            const message = messageInput.value;
-            if (message.trim() === "") return;
-            socketio.emit("message", { data: message });
-            messageInput.value = "";}
-        
-
-            
-messageInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    sendMessage();
-    event.preventDefault(); // Prevent form submission
-  }
+          socketio.emit("message", { data: message });
+          messageInput.value = "";
+        }
+      
+      // keyboard enter
+      messageInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+      sendMessage();
+      }
 });
-
-                
-        document.getElementById('leaveChat').addEventListener('click', ()=>{
-            window.location = "{{url_for('find_chat')}}"
-        })
+      // leaving the chat
+      document.getElementById('leaveChat').addEventListener('click', ()=>{
+        window.location = "{{url_for('find_chat')}}"
+      })
+    
     </script>
+
+    <!-- display messages -->
     {% for msg in messages %}
-    <script type="text/javascript">
+    <script>
       createMessage("{{msg.username}}", "{{msg.message}}");
     </script>
     {% endfor %}
+
 {% endblock %}
