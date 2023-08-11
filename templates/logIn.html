@@ -1,21 +1,27 @@
 <!-- {% block title %}Small Talk Themantic Chat Rooms|Log In{% endblock %} -->
+
+<!-- altering the base (app wrapper) to the log in panel -->
 {% extends 'base.html' %} {% block content %}
     <section>
+    <!-- main section -->
     <main>
-        <h2>Log In</h2>
-        <form method="post" action="logging">
-            <input type="text" name="username" id="username" placeholder="Name" autofocus/><br>
+        <h2 class="statement">Log In</h2>
+        <form method="post" action="logging" class="entering">
+            <input type="text" name="username" id="username" placeholder="Userame" autofocus/><br>
             <input type="password" name="pass" id="pass" placeholder="Password">
+            <!-- notifications -->
             {% if error %}
                 <p>{{error}}</p>
             {% endif %}
-            <section>
+            <div class="entering-buttons">
                 <button type="submit" class="log">Log in</button>
                 <button type="button" id="back">Back</button>
-            </section>
+            </div>
         </form>
     </main>
     </section>
+
+    <!-- "Back" button destination, Javascript inclusion -->
     <script type="text/javascript">
         let back = document.getElementById('back')
         back.addEventListener('click', ()=>{
