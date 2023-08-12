@@ -9,16 +9,27 @@
             <div>
                 <button class="preview">Preview</button>
                 <button class="about">About</button>
-                
                 <!-- the form element, for logging out -->
                 <form action="{{ url_for('logout') }}" method="POST" class="logout">
                     <button type="submit" id="logout">Log Out</button>
                 </form>
             </div>
+
+                <!-- moblie nav button -->
+                <img src="{{ url_for('static', filename='bars-solid.svg') }}" alt="mobile navigation button" class="mobile-nav-btn">
+                <!-- mobile navigation -->
+                <div id="mobile-nav-window">
+                    <p>Preview</p>
+                    <p>About</p>
+                    <form action="{{ url_for('logout') }}" method="POST" class="logout">
+                        <button type="submit" id="logout">Log Out</button>
+                    </form>
+                    <button class="close-mobile-nav">close</button>
+                </div>
         </nav>
         <!-- main section -->
-        <main>
-            <h3 class="statement" style="margin-top: 7rem;">Find a Theme</h3> 
+        <main class="find-chat-main">
+            <h2 class="statement" style="margin-top: 7rem;">Find a Theme</h2> 
             <section class="all-themes">
                     <form method="get"  acttion="{{url_for('find_chat')}}" action="{{url_for('chatting')}}" class="themes">
                         <!-- loop of all the themes -->
@@ -40,9 +51,53 @@
 
     <!-- directs the window location to the "log in" panel, Javascript inclusion -->
     <script type="text/javascript">
-        let back = document.getElementById('logout')
-        logout.addEventListener('click', ()=>{
-            window.location = "{{ url_for('login') }}"
+        // let back = document.getElementById('logout')
+        // logout.addEventListener('click', ()=>{
+        //     window.location = "{{ url_for('login') }}"
+        // })
+
+
+
+    // mobile nav button
+    
+    mobileNavButton = document.querySelector('.mobile-nav-btn')
+    mobileNavWindow = document.getElementById('mobile-nav-window');
+    mainContainer = document.querySelector('.find-chat-main');
+    mobileNavCloseButton = document.querySelector('.close-mobile-nav');
+
+
+    mobileNavButton.addEventListener('click', ()=>{
+        if(mobileNavWindow.style.display != 'block'){
+            alert('pop')
+        mobileNavWindow.style.display = 'block';
+        mainContainer.style.filter = "blur(8px)";
+        mobileNavButton.style.transform = 'rotate(90deg)'};
+    })
+
+    const t = function(){
+        mobileNavWindow.style.display = 'none';
+    }
+    //     document.getElementById('mobile-nav-window').style.display = 'block';
+    //     document.querySelector('.find-chat-main').style.filter = "blur(8px)";
+    //     document.querySelector('.mobile-nav-btn').style.transform = 'rotate(90deg)'
+    // })
+    // const t = function(){
+    //     document.getElementById('mobile-nav-window').style.display = 'none';
+    //     document.querySelector('.find-chat-main').style.filter = "blur(0px)"
+    //     document.getElementById('mobile-nav-window').style.transform = 'translate(-50%, -50%)';
+    // }
+
+        mobileNavCloseButton.addEventListener('click',()=>{
+            mobileNavWindow.style.transform = 'translate(-50%, -30%)';
+            mobileNavButton.style.transform = 'rotate(180deg)'
+            setTimeout(t, 300)
         })
+    // document.querySelector('.close-mobile-nav').addEventListener('click', ()=>{
+    //     document.getElementById('mobile-nav-window').style.transform = 'translate(-50%, -30%)';
+    //     document.getElementById('mobile-nav-window').style.opacity = '0';
+    //     document.querySelector('.mobile-nav-btn').style.transform = 'rotate(180deg)'
+    //     setTimeout(t, 300);
+    // })
+        
     </script>
 {% endblock %}
