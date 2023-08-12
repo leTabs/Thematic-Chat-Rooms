@@ -1,24 +1,31 @@
-
+:root{
+    --bg-linear-gradient: 145deg, rgb(240, 240, 240), rgb(201, 177, 235),var(--deep-purple-plus);
+    --nav-bg-color: rgb(255, 255, 255);
+    --nav-right-text: white;
+    --btn-main-color: rgb(69, 0, 72);
+    --btn-bg-hover-01: rgb(235, 206, 227);
+    --deep-text-color: var(--btn-main-color);
+    --deep-purple-plus: rgb(89, 4, 90);
+    --deep-purple: rgb(98, 0, 128);
+    --soft: rgb(123, 27, 91);
+    --light-purple: rgb(149, 4, 149);
+    --extra-light-purple: rgb(211, 48, 211);
+    --extra-deep-purple: rgb(41, 0, 41);
+    --message-bg: rgb(117, 26, 171);
+}
 ::-webkit-scrollbar {
     width: 5px;
   }
 ::-webkit-scrollbar-track {
-    background: #3527d4;
+    background: var(--extra-light-purple);
   }
 ::-webkit-scrollbar-thumb {
-    background: #010d4e;
+    background: var(--light-purple);
   }
 ::-webkit-scrollbar-thumb:hover {
-    background: #1e0013; 
+    background: var(--extra-deep-purple); 
   }
-:root{
-    --light-blue: rgb(91, 168, 240);
-    --text-color: rgb(5, 58, 74);
-    --deep-blue: rgb(0, 18, 42);
-    --blue: rgb(5, 52, 128);
-    --deep-purple: rgb(42, 0, 38);
-    --light-purple: rgb(87, 19, 150);
-}
+
 *{
     font-family: sans-serif
 }
@@ -28,19 +35,19 @@
     overflow: hidden;
 }
 html{
-    background: linear-gradient(45deg, rgb(107, 137, 156), rgb(244, 244, 244)70%,var(--light-blue)70%);
+    background: linear-gradient(var(--bg-linear-gradient));
 }
-.index-nav{
+nav{
     position: absolute;
     top:0;
     width: 100%;
-    background-color:var(--light-blue);
+    background-color:var(--nav-bg-color);
     box-shadow: 3px 3px 23px 5px black ;
     display: flex;
     justify-content: space-between ;
 }
 .index-nav p{
-    margin:1.3rem;
+    margin:1.5rem 1rem;
     display: inline-block;
 }
 .index-title{
@@ -52,26 +59,13 @@ html{
     margin-right: 3rem;
 }
 .index-nav div p{
-    margin-top: 1.5rem;
-    font-size: 1.5rem;
-    color: var(--deep-blue);
-}
-.index-nav div p:last-child{
-    border: solid 1px black ;
-    margin: 0.6rem;
-    padding:0.6rem;
-    background-color: var(--blue);
-    color: rgb(13, 221, 221);
-    border: white;
-    color: white;
-    border-radius: 5px;
-    border: var(--blue) 1px solid;
-    transition: 500ms;
+    font-size: 1.2rem;
+    color: var(--deep-purple-plus);
 }
 
 .index-nav div p:last-child:hover, .all-themes button:hover, #leaveChat:hover, .input-div button:hover{
-    background-color: rgb(192, 238, 247);
-    color:var(--blue);
+    background-color: var(--btn-bg-hover-01);
+    color:var(--soft);
     cursor: pointer;
 }
 main{
@@ -79,51 +73,88 @@ main{
     height: 100vh;
 }
 .intro{
-    margin-top: 12rem;
-    padding: 4rem 2rem 1rem 3rem ;
+    margin-top: 10rem;
+    padding: 4rem 2rem 1rem 5rem ;
+    opacity: 0;
+    animation: apearing 1.5s linear forwards;
+}
+@keyframes apearing {
+0%{
+    opacity:0;
+}
+100%{
+    opacity:1;
+}
 }
 .intro h2{
-    font-size: 4.8rem;
+    font-size: 4.4rem;
     color: var(--text-color);
 }
 .intro p{
     font-size: 1.5rem;
     padding: 0 2rem;
     margin-left: 5rem;
-    margin-top: 3rem;
+    margin-top: 4rem;
     width: 70%;
     color: var(--text-color);
     text-align: left;
     border-left: solid 5px;
 }
-.index-buttons{
-    display: inline-block;
-    margin: 1rem 0 0 60%;
-    box-shadow: inset 1px 1px  10px  rgba(0, 0, 0, 0.5);
-}
-.index-buttons button , .entering button, #logout{
-    font-size: 1.5rem;
-    width: 7rem;
-    margin:1rem;
-    margin-top: 3rem;
-    background-color: var(--light-purple);
-    border: var(--light-purple) solid 1px;
-    color: white;
-    padding:0.5rem;
+
+.index-buttons button , .entering button, #logout, .preview, .about, .continue{
+    font-size: 1.4rem;
+    width: 8.5rem;
+    margin:1rem 1rem auto 1rem;
+    background-color: var(--btn-main-color);
+    border: var(--btn-main-color) solid 1px;
+    color: var(--nav-right-text);
+    padding:0.7rem;
     outline: none;
-    border-radius: 5px;
+    border-radius: 30px;
     transition: 500ms;
 }
-.index-buttons button:hover, .entering-buttons button:hover, #logout:hover{
-    background-color: var(--light-blue);
-    color:var(--deep-purple);
+
+.continue{
+    margin: 3rem 0 0 5rem;
+    background-color: var(--light-purple);
+    padding: 0.8rem;
+    box-shadow: none;
+    border: none;
+}
+.continue:hover{
     cursor: pointer;
+    background-color: var(--extra-light-purple);
+}
+.index-buttons button:first-of-type, .index-buttons button:nth-of-type(2), .preview, .about{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    color: var(--deep-text-color);
+    font-size: 1.5rem;
+    margin-top: 1.75rem;
+}
+.index-buttons button:hover, .entering-buttons button:hover, #logout:hover{
+    background-color: transparent;
+    color:var(--deep-text-color);
+    cursor: pointer;
+}
+.index-buttons button:first-of-type:hover, 
+.index-buttons button:nth-of-type(2):hover, 
+.preview:hover, 
+.about:hover{
+    color: var(--extra-light-purple);
+    cursor: pointer;
+}
+#mobile-nav-window, .mobile-nav-btn{
+    display: none;
 }
 /* Log in */
 
 .statement{
     text-align: center;
-    font-size: 4rem;
+    font-size: 3.7rem;
     margin-top: 4rem;
     color: var(--text-color)
 }
@@ -135,16 +166,20 @@ main{
     border-radius: 15px;
     box-shadow: 3px 3px 3px 3px black;
 }
+.entering button{
+    box-shadow: 3px 3px 3px black;
+    margin-bottom: 0.5rem
+}
 .entering input{
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: solid 1px var(--text-color);
+    border-bottom: solid 1px var(--extra-deep-purple);
     outline: none;
     margin-bottom: 2rem;
     display: inline-block;
-    color: var(--deep-blue)
+    color: var(--deep-text-color)
 }
 .entering p{
     text-align: center;
@@ -162,15 +197,15 @@ main{
     padding:1.5rem 0.5rem 1rem 0.5rem;
     width: 60%;
     margin: 2.5rem auto 0 auto;
-    height:45vh;
+    height:55vh;
     border-radius: 5px;
     box-shadow: 3px 3px 3px 3px black;
     overflow-y: scroll;
 
 }
 .all-themes p{
-    border-bottom: solid var(--deep-blue) 1px;
-    font-size: 2rem;
+    border-bottom: solid var(--deep-purple-plus) 1px;
+    font-size: 1.8rem;
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 2rem;
@@ -179,36 +214,34 @@ main{
     font-size: 1.2rem;
     margin-bottom:0.5rem;
     padding:0.5rem;
-    background-color: var(--blue);
-    color: rgb(13, 221, 221);
+    background-color: var(--soft);
     border: white;
     color: white;
     border-radius: 5px;
-    border: var(--blue) 1px solid;
+    border: var(--soft) 1px solid;
     transition: 500ms;
 }
 .logout{
     text-align: center;
+    display: inline;
 }
-/* chatting */
 .theme{
-    color: var(--light-purple);
+    color: var(--soft);
 }
 #leaveChat{
     margin:0.5rem 3rem;
     font-size: 1.2rem;
-    /* margin-bottom:0.5rem; */
     padding:0 1rem;
-    background-color: var(--blue);
+    background-color: var(--soft);
     color: rgb(13, 221, 221);
     border: white;
     color: white;
     border-radius: 5px;
-    border: var(--blue) 1px solid;
+    border: var(--soft) 1px solid;
     transition: 500ms;
 }
 .username,.other-user{
-    color: var(--text-color);
+    color: #4f003f;
     text-align: right;
     font-size: 1.5rem;
     margin:1.5rem;
@@ -216,21 +249,22 @@ main{
 }
 .other-user{
     text-align: left;
-    color: #1e0013;
+    color: #025a7d;
 }
 .text-message-username, .text-message-other-user{
     display: inline-block;
     color: white;
     border: solid 1px var(--deep-purple);
-    background-color:#3527d4;
+    background-color:var(--message-bg);
     padding:1rem;
     margin-top: 0.5rem;
     border-radius: 15px;
     font-weight: 300;
+    width:fit-content;
 }
 .text-message-other-user{
     background-color: rgb(255, 255, 255);
-    color: var(--text-color)
+    color: var(--text-color);
 }
 .messaging{
     border:solid 3px var(--deep-purple);
@@ -243,7 +277,6 @@ main{
 }
 .input-div{
     border-top: 3px solid var(--deep-purple);
-    /* border-radius: 5px; */
     display: grid;
     grid-template-columns: 7fr 1fr;
     padding-top: 0.5rem;
@@ -255,7 +288,7 @@ main{
     outline: none;
 }
 .input-div input{
-    border: solid var(--deep-blue) 3px;
+    border: solid var(--deep-purple-plus) 3px;
     padding:0.5rem;
     font-size: 2rem;
     border-radius: 5px;
@@ -264,11 +297,332 @@ main{
 }
 .input-div button{
     transition: 500ms;
-    background-color: var(--light-purple);
+    background-color: rgb(13, 110, 123);
     color: white;
     border-radius: 5px;
-    border: 1px solid var(--light-purple)
+    border: none
 }
-button{
-    box-shadow: 3px 3px 3px 1px black;
+.input-div button:hover{
+    background-color: rgb(189, 251, 251);
+    color: var(--deep-text-color)
+}
+@media (min-width: 360px) and (max-width: 767px){
+    nav{
+        position: absolute;
+        top:0;
+        width: 100%;
+        background-color:var(--nav-bg-color);
+        box-shadow: 3px 3px 23px 5px black ;
+        display: flex;
+        justify-content: space-between ;
+    }
+    .mobile-nav-btn{
+        display: block;
+        width: 2rem;
+        height: 2rem;
+        margin: auto 1rem auto 0;
+        transition: 300ms;
+    }
+    .mobile-nav-btn:active{
+        transform: scale(150%);
+    }
+    #mobile-nav-window{
+        width: 80vw;
+        position: fixed;
+        transform: translate(-50%, -50%);
+        top: 45%;
+        left: 50%;
+        z-index: 1;
+        border: solid var(--deep-purple-plus) 1px;
+        background-color: rgb(255, 255, 255);
+        opacity: 0;
+        animation: steping 300ms linear forwards;
+        border-radius: 15px;
+        text-align: center;
+        padding-top: 1rem;
+        transition: 300ms;
+    }
+    #mobile-nav-window p, #mobile-nav-window button{
+        display: block;
+        margin: 1rem auto;
+        font-size: 1.2rem;
+    }
+    #mobile-nav-window button{
+        background-color: var(--btn-main-color);
+        color: white;
+        padding:0.5rem 1rem;
+        outline: none;
+        border: solid 1px var(--btn-main-color);
+        border-radius: 35px;
+        transition: 300ms;
+    }
+    #mobile-nav-window button:last-of-type{
+        color: var(--extra-deep-purple);
+        background-color: transparent;
+        width: 95%;
+    }
+    #mobile-nav-window button:hover{
+        background-color: transparent;
+        color: var(--deep-purple);
+        cursor: pointer;
+    }
+    #mobile-nav-window button:last-of-type:hover{
+        box-shadow: 5px 5px 5px black;
+        font-weight: bold;
+    }
+    @keyframes steping {
+        0%{
+            opacity: 0;
+            top: 45%;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0);
+        }
+        100%{
+            opacity: 1;
+            top: 50%;
+            box-shadow: 3px 13px 13px rgb(0, 0, 0);
+        }
+    }
+    .index-title{
+        font-size: 1.5rem;
+        padding-left: 0.5rem;
+    }    
+    main{
+        width: 100vw;
+        height: 100vh;
+    }
+    .intro{
+        margin-top: 8rem;
+        padding: 1rem ;
+        opacity: 0;
+        animation: apearing 1.5s linear forwards;
+        text-align: center;
+    }
+    @keyframes apearing {
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+    }
+    .intro h2{
+        font-size: 3rem;
+        color: var(--text-color);
+    }
+    .intro p{
+        font-size: 1.2rem;
+        padding: 0 1rem 2rem 1rem;
+        margin-left: 0;
+        margin: 2rem 3rem;
+        width: 70%;
+        text-align: left;
+        border-left: none;
+        border-bottom: solid 1px var(--extra-deep-purple);
+    }
+    
+    .index-buttons button , .entering button, #logout, .preview, .about, .continue{
+        font-size: 1.4rem;
+        width: 8.5rem;
+        margin:1rem 1rem auto 1rem;
+        background-color: var(--btn-main-color);
+        border: var(--btn-main-color) solid 1px;
+        color: var(--nav-right-text);
+        padding:0.7rem;
+        outline: none;
+        border-radius: 30px;
+        transition: 500ms;
+    }
+    .continue{
+        margin: 1rem 0;
+        background-color: var(--light-purple);
+        padding: 0.8rem;
+        box-shadow: none;
+        border: none;
+    }
+    .continue:hover{
+        cursor: pointer;
+        background-color: var(--extra-light-purple);
+    }
+    .index-buttons button:first-of-type, .index-buttons button:nth-of-type(2), .preview, .about{
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+        color: var(--deep-text-color);
+        font-size: 1.2rem;
+        margin-top: 1.75rem;
+    }
+    .index-buttons button:hover, .entering-buttons button:hover, #logout:hover{
+        background-color: transparent;
+        color:var(--deep-text-color);
+        cursor: pointer;
+    }
+    .index-buttons button:first-of-type:hover, 
+    .index-buttons button:nth-of-type(2):hover, 
+    .preview:hover, 
+    .about:hover{
+        color: var(--extra-light-purple);
+        cursor: pointer;
+    }
+    .index-nav div{
+        display: none;
+    }
+
+    /* Log in */
+    
+    .statement{
+        text-align: center;
+        font-size: 2.8rem;
+        margin-top: 6rem;
+        color: var(--text-color)
+    }
+    .entering{
+        border: solid var(--deep-purple) 1px;
+        width: 50%;
+        margin: 3rem auto;
+        padding: 6rem 4rem 2rem 4rem;
+        border-radius: 15px;
+        box-shadow: 3px 3px 3px 3px black;
+    }
+    .entering button{
+        box-shadow: 3px 3px 3px black;
+        margin-bottom: 0.5rem
+    }
+    .entering input{
+        font-size: 1.2rem;
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: solid 1px var(--extra-deep-purple);
+        outline: none;
+        margin-bottom: 2rem;
+        display: inline-block;
+        color: var(--deep-text-color)
+    }
+    .entering p{
+        text-align: center;
+        font-size: 1rem ;
+    }
+    .entering-buttons{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+    }
+    /* Themes  */
+    .all-themes{
+        border: solid 1px var(--deep-purple);
+        padding:1.5rem 0.5rem 1rem 0.5rem;
+        width: 90%;
+        margin: 2.5rem auto 0 auto;
+        height:60vh;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px 3px black;
+        overflow-y: scroll;
+    
+    }
+    .all-themes p{
+        border-bottom: solid var(--deep-purple-plus) 1px;
+        font-size: 1.8rem;
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem 2rem;
+    }
+    .all-themes button{
+        font-size: 1.2rem;
+        margin-bottom:0.5rem;
+        padding:0.5rem;
+        background-color: var(--soft);
+        border: white;
+        color: white;
+        border-radius: 5px;
+        border: var(--soft) 1px solid;
+        transition: 500ms;
+    }
+    .logout{
+        text-align: center;
+        display: inline;
+    }
+    .theme{
+        color: var(--soft);
+    }
+    #leaveChat{
+        margin:0.5rem 3rem;
+        font-size: 1.2rem;
+        padding:0 1rem;
+        background-color: var(--soft);
+        color: rgb(13, 221, 221);
+        border: white;
+        color: white;
+        border-radius: 5px;
+        border: var(--soft) 1px solid;
+        transition: 500ms;
+    }
+    .username,.other-user{
+        color: #4f003f;
+        text-align: right;
+        font-size: 1.5rem;
+        margin:1.5rem;
+        font-weight: bolder;
+    }
+    .other-user{
+        text-align: left;
+        color: #025a7d;
+    }
+    .text-message-username, .text-message-other-user{
+        display: inline-block;
+        color: white;
+        border: solid 1px var(--deep-purple);
+        background-color:var(--message-bg);
+        padding:1rem;
+        margin-top: 0.5rem;
+        border-radius: 15px;
+        font-weight: 300;
+        width:fit-content;
+    }
+    .text-message-other-user{
+        background-color: rgb(255, 255, 255);
+        color: var(--text-color);
+    }
+    .messaging{
+        border:solid 3px var(--deep-purple);
+        margin: 8rem 1rem 1rem 1rem;
+        border-radius: 5px;
+    }
+    #messages{
+        height: calc(100vh - 14rem);
+        overflow-y: scroll;
+    }
+    .input-div{
+        border-top: 3px solid var(--deep-purple);
+        display: grid;
+        grid-template-columns: 7fr 1fr;
+        padding-top: 0.5rem;
+        box-shadow: 5px -5px 30px black;
+    }
+    .input-div input, .input-div button{
+        margin:0.5rem;
+        font-size: 1.5rem;
+        outline: none;
+    }
+    .input-div input{
+        border: solid var(--deep-purple-plus) 3px;
+        padding:0.5rem;
+        font-size: 2rem;
+        border-radius: 5px;
+        color: var(--text-color);
+        background-color: rgba(255, 255, 255, 0.598);
+    }
+    .input-div button{
+        transition: 500ms;
+        background-color: rgb(13, 110, 123);
+        color: white;
+        border-radius: 5px;
+        border: none
+    }
+    .input-div button:hover{
+        background-color: rgb(189, 251, 251);
+        color: var(--deep-text-color)
+    }
 }
