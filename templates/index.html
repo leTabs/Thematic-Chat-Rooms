@@ -12,20 +12,33 @@
             <button type="button" id="logInButton">Log In</button>
             <button type="button" id="signUpButton">Sign Up</button>
         </div>
+        <!-- moblie nav button -->
+        <img src="{{ url_for('static', filename='bars-solid.svg') }}" alt="mobile navigation button" class="mobile-nav-btn">
+        <!-- mobile navigation -->
+        <div id="mobile-nav-window">
+            <p>Preview</p>
+            <p>About</p>
+            <button id="logInMobileButton">Log In</button>
+            <button id="signUpMobileButton">Sign Up</button>
+            <button class="close-mobile-nav">close</button>
+        </div>
     </nav>
     <!-- main section -->
     <main>
         <div class="intro">
             <h2>Themantic Chatrooms</h2>
-            <p>Discover and engage in dynamic chatrooms tailored to your interests! <br />
-                This chatroom website brings like-minded individuals together for meaningful conversations.
+            <p>
+                Welcome to the Themantic Chatrooms <br />
+                Discover and engage in dynamic chatrooms tailored to your interests! <br />
+                This chatroom website brings like-minded individuals together for <br />meaningful conversations.
             </p>
+            <button class="continue">Continue</button>
         </div>
-        <hr class="index-hr"/>
     </main>
 
-    <!-- "Log in" & "Sign up" button destinations, Javascript inclusion -->
+    <!-- Javascript inclusion -->
     <script>
+        // "Log in" & "Sign up" button destinations
         const logInButton = document.querySelector('#logInButton')
         const signUpButton = document.querySelector('#signUpButton')
             
@@ -35,5 +48,34 @@
         signUpButton.addEventListener('click', ()=>{
             location.href="{{ url_for('signup') }}"
         })
+
+        // Mobile version
+        const logInMobileButton = document.querySelector('#logInMobileButton')
+        const signUpMobileButton = document.querySelector('#signUpMobileButton')
+
+        logInMobileButton.addEventListener('click', ()=>{
+        location.href="{{ url_for('login') }}"})
+
+        signUpMobileButton.addEventListener('click', ()=>{
+            location.href="{{ url_for('signup') }}"
+        })
+    // mobile nav button
+    document.querySelector('.mobile-nav-btn').addEventListener('click', ()=>{
+        document.getElementById('mobile-nav-window').style.display = 'block';
+        document.querySelector('.intro').style.filter = "blur(8px)";
+        document.querySelector('.mobile-nav-btn').style.transform = 'rotate(90deg)'
+    })
+    const t = function(){
+        
+        document.getElementById('mobile-nav-window').style.display = 'none';
+        document.querySelector('.intro').style.filter = "blur(0px)"
+        document.getElementById('mobile-nav-window').style.transform = 'translate(-50%, -50%)';
+    }
+    document.querySelector('.close-mobile-nav').addEventListener('click', ()=>{
+        document.getElementById('mobile-nav-window').style.transform = 'translate(-50%, 140%)';
+        document.getElementById('mobile-nav-window').style.opacity = '0';
+        document.querySelector('.mobile-nav-btn').style.transform = 'rotate(180deg)'
+        setTimeout(t, 300);
+    })
     </script>
 {% endblock %}
