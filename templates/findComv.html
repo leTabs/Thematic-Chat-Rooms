@@ -49,55 +49,38 @@
         </main>
     </section>
 
-    <!-- directs the window location to the "log in" panel, Javascript inclusion -->
+    <!-- Javascript inclusion -->
     <script type="text/javascript">
-        // let back = document.getElementById('logout')
-        // logout.addEventListener('click', ()=>{
-        //     window.location = "{{ url_for('login') }}"
-        // })
-
-
 
     // mobile nav button
-    
     mobileNavButton = document.querySelector('.mobile-nav-btn')
     mobileNavWindow = document.getElementById('mobile-nav-window');
-    mainContainer = document.querySelector('.find-chat-main');
     mobileNavCloseButton = document.querySelector('.close-mobile-nav');
+    allThemeContainer = document.querySelector('.all-themes');
+    containerTitle = document.querySelector('.statement')
 
 
     mobileNavButton.addEventListener('click', ()=>{
         if(mobileNavWindow.style.display != 'block'){
-            alert('pop')
         mobileNavWindow.style.display = 'block';
-        mainContainer.style.filter = "blur(8px)";
-        mobileNavButton.style.transform = 'rotate(90deg)'};
+        allThemeContainer.style.filter = "blur(8px)";
+        containerTitle.style.filter = "blur(8px)";
+        mobileNavButton.style.transform = 'rotate(90deg)'
+    };
     })
 
-    const t = function(){
+    const navWindowClosure = function(){
         mobileNavWindow.style.display = 'none';
+        mobileNavWindow.style.transform = 'translate(-50%, -50%)';
+        allThemeContainer.style.filter = "blur(0)"
+        containerTitle.style.filter = "blur(0)";
     }
-    //     document.getElementById('mobile-nav-window').style.display = 'block';
-    //     document.querySelector('.find-chat-main').style.filter = "blur(8px)";
-    //     document.querySelector('.mobile-nav-btn').style.transform = 'rotate(90deg)'
-    // })
-    // const t = function(){
-    //     document.getElementById('mobile-nav-window').style.display = 'none';
-    //     document.querySelector('.find-chat-main').style.filter = "blur(0px)"
-    //     document.getElementById('mobile-nav-window').style.transform = 'translate(-50%, -50%)';
-    // }
 
-        mobileNavCloseButton.addEventListener('click',()=>{
-            mobileNavWindow.style.transform = 'translate(-50%, -30%)';
-            mobileNavButton.style.transform = 'rotate(180deg)'
-            setTimeout(t, 300)
-        })
-    // document.querySelector('.close-mobile-nav').addEventListener('click', ()=>{
-    //     document.getElementById('mobile-nav-window').style.transform = 'translate(-50%, -30%)';
-    //     document.getElementById('mobile-nav-window').style.opacity = '0';
-    //     document.querySelector('.mobile-nav-btn').style.transform = 'rotate(180deg)'
-    //     setTimeout(t, 300);
-    // })
-        
+     mobileNavCloseButton.addEventListener('click',()=>{
+        mobileNavWindow.style.transform = 'translate(-50%, 140%)';
+        mobileNavButton.style.transform = 'rotate(180deg)'
+        setTimeout(navWindowClosure, 300)
+    })
+
     </script>
 {% endblock %}
