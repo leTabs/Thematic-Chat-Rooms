@@ -17,7 +17,7 @@
         <!-- mobile navigation -->
         <div id="mobile-nav-window">
             <p>Preview</p>
-            <p>About</p>
+            <p class="about">About</p>
             <button id="logInMobileButton">Log In</button>
             <button id="signUpMobileButton">Sign Up</button>
             <button class="close-mobile-nav">close</button>
@@ -59,23 +59,41 @@
         signUpMobileButton.addEventListener('click', ()=>{
             location.href="{{ url_for('signup') }}"
         })
+
+
     // mobile nav button
-    document.querySelector('.mobile-nav-btn').addEventListener('click', ()=>{
-        document.getElementById('mobile-nav-window').style.display = 'block';
-        document.querySelector('.intro').style.filter = "blur(8px)";
-        document.querySelector('.mobile-nav-btn').style.transform = 'rotate(90deg)'
+
+    mobileNavButton = document.querySelector('.mobile-nav-btn')
+    mobileNavWindow = document.getElementById('mobile-nav-window');
+    mobileNavCloseButton = document.querySelector('.close-mobile-nav');
+    mainIntroDiv = document.querySelector('.intro')
+
+
+
+    mobileNavButton.addEventListener('click', ()=>{
+        if(mobileNavWindow.style.display != 'block'){
+        mobileNavWindow.style.display = 'block';
+        mainIntroDiv.style.filter = "blur(8px)";
+        mobileNavButton.style.transform = 'rotate(90deg)'
+    };
     })
-    const t = function(){
-        
-        document.getElementById('mobile-nav-window').style.display = 'none';
-        document.querySelector('.intro').style.filter = "blur(0px)"
-        document.getElementById('mobile-nav-window').style.transform = 'translate(-50%, -50%)';
+
+    const navWindowClosure = function(){
+        mobileNavWindow.style.display = 'none';
+        mobileNavWindow.style.transform = 'translate(-50%, -50%)';
+        mainIntroDiv.style.filter = "blur(0)"
     }
-    document.querySelector('.close-mobile-nav').addEventListener('click', ()=>{
-        document.getElementById('mobile-nav-window').style.transform = 'translate(-50%, 140%)';
-        document.getElementById('mobile-nav-window').style.opacity = '0';
-        document.querySelector('.mobile-nav-btn').style.transform = 'rotate(180deg)'
-        setTimeout(t, 300);
+
+     mobileNavCloseButton.addEventListener('click',()=>{
+        mobileNavWindow.style.transform = 'translate(-50%, 140%)';
+        mobileNavButton.style.transform = 'rotate(180deg)'
+        setTimeout(navWindowClosure, 300)
+    })
+
+
+    const about = document.querySelector('.about')
+    about.addEventListener('click',()=>{
+          
     })
     </script>
 {% endblock %}
