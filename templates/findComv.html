@@ -7,7 +7,6 @@
         <nav class="index-nav">
             <p class="index-title"><b>Small Talk</b></p>
             <div>
-                <button class="preview">Preview</button>
                 <button class="about">About</button>
                 <!-- the form element, for logging out -->
                 <form action="{{ url_for('logout') }}" method="POST" class="logout">
@@ -19,7 +18,6 @@
                 <img src="{{ url_for('static', filename='bars-solid.svg') }}" alt="mobile navigation button" class="mobile-nav-btn">
                 <!-- mobile navigation -->
                 <div id="mobile-nav-window">
-                    <p>Preview</p>
                     <p>About</p>
                     <form action="{{ url_for('logout') }}" method="POST" class="logout">
                         <button type="submit" id="logout">Log Out</button>
