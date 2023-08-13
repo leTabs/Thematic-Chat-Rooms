@@ -7,7 +7,6 @@
     <nav class="index-nav">
         <p class="index-title"><b>Small Talk</b></p>
         <div class="index-buttons">
-            <button class="preview">Preview</button>
             <button class="about">About</button>
             <button type="button" id="logInButton">Log In</button>
             <button type="button" id="signUpButton">Sign Up</button>
@@ -16,15 +15,14 @@
         <img src="{{ url_for('static', filename='bars-solid.svg') }}" alt="mobile navigation button" class="mobile-nav-btn">
         <!-- mobile navigation -->
         <div id="mobile-nav-window">
-            <p>Preview</p>
-            <p class="about">About</p>
+            <p class="about-mobile">About</p>
             <button id="logInMobileButton">Log In</button>
             <button id="signUpMobileButton">Sign Up</button>
             <button class="close-mobile-nav">close</button>
         </div>
     </nav>
     <!-- main section -->
-    <main>
+    <main class="main-index">
         <div class="intro">
             <h2>Themantic Chatrooms</h2>
             <p>
