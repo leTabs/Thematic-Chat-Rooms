@@ -32,6 +32,15 @@
             </p>
             <button class="continue">Continue</button>
         </div>
+
+        <div class="about-content">
+            <p class="about-text">
+                This webpage is designed for users with accounts, the platform allows you to effortlessly select from a range of themes to join discussion rooms in an instant.<br />
+                Once inside, you can engage in text-based conversations with other users who've joined the same room. Seamlessly switch between rooms to explore different topics. <br />
+                Create an account through the "Sign Up" process.
+            </p>
+            <button class="about-close">close</button>
+        </div>
     </main>
 
     <!-- Javascript inclusion -->
@@ -59,39 +68,67 @@
         })
 
 
-    // mobile nav button
+    // mobile nav button & "about" segment
 
-    mobileNavButton = document.querySelector('.mobile-nav-btn')
-    mobileNavWindow = document.getElementById('mobile-nav-window');
-    mobileNavCloseButton = document.querySelector('.close-mobile-nav');
-    mainIntroDiv = document.querySelector('.intro')
+    // getting necessities;
+    const mobileNavButton = document.querySelector('.mobile-nav-btn')
+    const mobileNavWindow = document.getElementById('mobile-nav-window');
+    const mobileNavCloseButton = document.querySelector('.close-mobile-nav');
+    const mainIntroDiv = document.querySelector('.intro')
+    const aboutContent = document.querySelector('.about-content')
+    const about = document.querySelector('.about')
+    const aboutClose = document.querySelector('.about-close')
 
 
-
+    // navigation button
     mobileNavButton.addEventListener('click', ()=>{
         if(mobileNavWindow.style.display != 'block'){
         mobileNavWindow.style.display = 'block';
         mainIntroDiv.style.filter = "blur(8px)";
+        aboutContent.style.display= 'none';
         mobileNavButton.style.transform = 'rotate(90deg)'
     };
     })
 
+    // nanigation closure function support
     const navWindowClosure = function(){
         mobileNavWindow.style.display = 'none';
         mobileNavWindow.style.transform = 'translate(-50%, -50%)';
         mainIntroDiv.style.filter = "blur(0)"
     }
 
-     mobileNavCloseButton.addEventListener('click',()=>{
+    // navigation closure
+    mobileNavCloseButton.addEventListener('click',()=>{
         mobileNavWindow.style.transform = 'translate(-50%, 140%)';
         mobileNavButton.style.transform = 'rotate(180deg)'
         setTimeout(navWindowClosure, 300)
     })
 
-
-    const about = document.querySelector('.about')
+    // "about" segment opening 
     about.addEventListener('click',()=>{
-          
+        aboutContent.style.display = 'block'
+        mainIntroDiv.style.filter = "blur(8px)"
+    })
+
+    // "about" closure function support
+    const aboutWindowClosure = function(){
+        aboutContent.style.display = 'none';
+        aboutContent.style.transform = 'translate(-50%, -50%)';
+        mainIntroDiv.style.filter = "blur(0)"
+    }
+
+    // "about" closure
+    aboutClose.addEventListener('click', ()=>{
+        aboutContent.style.transform = 'translate(-50%, -230%)';
+        setTimeout(aboutWindowClosure, 500);
+    })
+
+    // mobile "about" opening
+    const aboutMobile = document.querySelector('.about-mobile')
+    aboutMobile.addEventListener('click', ()=>{
+        mobileNavWindow.style.display = 'none';
+        mobileNavButton.style.transform = 'rotate(180deg)'
+        aboutContent.style.display = 'block'
     })
     </script>
 {% endblock %}
