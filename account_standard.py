@@ -8,7 +8,7 @@ def valid_username(string):
     string = string.strip()
     error_cases = {
         string.isalnum() != True: 'Username must contain only letters and numbers',
-        len(string) < 5 : 'Username must contain at least 5 characters',
+        len(string) < 5 or len(string) > 15: 'Username must contain 5 - 14 characters',
         ' ' in string: 'Username should not contain spaces'
     }
     for case in error_cases:
@@ -21,7 +21,7 @@ def valid_username(string):
 def valid_key(key):
     key = key.strip()
     error_cases = {
-        len(key) < 7:'Password must be at list 7 characters long',
+        len(key) < 7 or len(key) > 16:'Password must be 7 - 15 chracters',
         len(re.findall(r'[a-zA-Z]', key)) == 0:'Password must contain letters',
         len(re.findall(r'\d', key)) == 0:'Password must contain digits',
         len(re.findall(r'[@!%$#&*]', key)) == 0: 'Password must contain "@,!,%,$,#,&,*"',
