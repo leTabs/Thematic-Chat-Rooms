@@ -1,59 +1,71 @@
-<!-- {% block title %}Small Talk Themantic Chat Rooms|Find Chat Romm{% endblock %} -->
+<!-- {% block title %}Small Talk Themantic Chat Rooms{% endblock %} -->
 
-<!-- altering the base (app wrapper) to the log in panel -->
-{% extends 'base.html'%} {% block content %}
-    <section>
-        <!-- navigation bar -->
-        <nav class="index-nav">
-            <p class="index-title"><b>Small Talk</b></p>
-            <div>
-                <button class="about">About</button>
-                <!-- the form element, for logging out -->
-                <form action="{{ url_for('logout') }}" method="POST" class="logout">
-                    <button type="submit" id="logout">Log Out</button>
-                </form>
-            </div>
+<!-- altering the base (app wrapper) to the index panel -->
+{% extends 'base.html' %} {% block content %}
 
-                <!-- moblie nav button -->
-                <img src="{{ url_for('static', filename='bars-solid.svg') }}" alt="mobile navigation button" class="mobile-nav-btn">
-                <!-- mobile navigation -->
-                <div id="mobile-nav-window">
-                    <p class="about-mobile">About</p>
-                    <form action="{{ url_for('logout') }}" method="POST" class="logout">
-                        <button type="submit" id="logout" class="mobile-logout">Log Out</button>
-                    </form>
-                    <button class="close-mobile-nav">close</button>
-                </div>
-        </nav>
-        <!-- main section -->
-        <main class="find-chat-main">
-            <h2 class="statement" style="margin-top: 7rem;">Find a Theme</h2> 
-            <section class="all-themes">
-                    <form method="get"  acttion="{{url_for('find_chat')}}" action="{{url_for('chatting')}}" class="themes">
-                        <!-- loop of all the themes -->
-                        {% for user in usernames %}
-                        <!-- an element with the theme and a "join" button -->
-                        <p>
-                            <span>{{user}}</span>
-                            <button type="submit" class="joinButton" name="reciever" value="{{ loop.index }} {{user}}">
-                                Join
-                            </button>
-                        </p>
-                        {% endfor %}
-                    </form>
-            </section>
+    <!-- navigation bar -->
+    <nav class="index-nav">
+        <p class="index-title"><b>Small Talk</b></p>
+        <div class="index-buttons">
+            <button class="about">About</button>
+            <button type="button" id="logInButton">Log In</button>
+            <button type="button" id="signUpButton">Sign Up</button>
+        </div>
+        <!-- moblie nav button -->
+        <img src="{{ url_for('static', filename='bars-solid.svg') }}" alt="mobile navigation button" class="mobile-nav-btn">
+        <!-- mobile navigation -->
+        <div id="mobile-nav-window">
+            <p class="about-mobile">About</p>
+            <button id="logInMobileButton">Log In</button>
+            <button id="signUpMobileButton">Sign Up</button>
+            <button class="close-mobile-nav">close</button>
+        </div>
+    </nav>
+    <!-- main section -->
+    <main class="main-index">
+        <div class="intro">
+            <h2>Thematic Chatrooms</h2>
+            <p>
+                Welcome to the Thematic Chatrooms <br />
+                Discover and engage in dynamic chatrooms tailored to your interests! <br />
+                This chatroom website brings like-minded individuals together for <br />meaningful conversations.
+            </p>
+        </div>
 
-            <div class="about-content">
-                <p class="about-text">
-                    This webpage is designed for users with accounts, the platform allows you to effortlessly select from a range of themes to join discussion rooms in an instant. Once inside, you can engage in text-based conversations with other users who've joined the same room. Seamlessly switch between rooms to explore different topics. Create an account through the "Sign Up" process.
-                </p>
-                <button class="about-close">close</button>
-            </div>
-        </main>
-    </section>
+        <div class="about-content">
+            <p class="about-text">
+                This webpage is designed for users with accounts, the platform allows you to effortlessly select from a range of themes to join discussion rooms in an instant.<br />
+                Once inside, you can engage in text-based conversations with other users who've joined the same room. Seamlessly switch between rooms to explore different topics. <br />
+                Create an account through the "Sign Up" process.
+            </p>
+            <button class="about-close">close</button>
+        </div>
+    </main>
 
     <!-- Javascript inclusion -->
-    <script type="text/javascript">
+    <script>
+        // "Log in" & "Sign up" button destinations
+        const logInButton = document.querySelector('#logInButton')
+        const signUpButton = document.querySelector('#signUpButton')
+            
+        logInButton.addEventListener('click', ()=>{
+        location.href="{{ url_for('login') }}"
+        })
+        signUpButton.addEventListener('click', ()=>{
+            location.href="{{ url_for('signup') }}"
+        })
+
+        // Mobile version
+        const logInMobileButton = document.querySelector('#logInMobileButton')
+        const signUpMobileButton = document.querySelector('#signUpMobileButton')
+
+        logInMobileButton.addEventListener('click', ()=>{
+        location.href="{{ url_for('login') }}"})
+
+        signUpMobileButton.addEventListener('click', ()=>{
+            location.href="{{ url_for('signup') }}"
+        })
+
 
     // mobile nav button & "about" segment
 
@@ -61,20 +73,18 @@
     const mobileNavButton = document.querySelector('.mobile-nav-btn')
     const mobileNavWindow = document.getElementById('mobile-nav-window');
     const mobileNavCloseButton = document.querySelector('.close-mobile-nav');
-    const allThemeContainer = document.querySelector('.all-themes');
-    const containerTitle = document.querySelector('.statement')
-    const about = document.querySelector('.about')
+    const mainIntroDiv = document.querySelector('.intro')
     const aboutContent = document.querySelector('.about-content')
+    const about = document.querySelector('.about')
     const aboutClose = document.querySelector('.about-close')
-    const aboutMobile = document.querySelector('.about-mobile')
+
 
     // navigation button
     mobileNavButton.addEventListener('click', ()=>{
         if(mobileNavWindow.style.display != 'block'){
         mobileNavWindow.style.display = 'block';
-        allThemeContainer.style.filter = "blur(8px)";
+        mainIntroDiv.style.filter = "blur(8px)";
         aboutContent.style.display= 'none';
-        containerTitle.style.filter = "blur(8px)";
         mobileNavButton.style.transform = 'rotate(90deg)'
     };
     })
@@ -83,8 +93,7 @@
     const navWindowClosure = function(){
         mobileNavWindow.style.display = 'none';
         mobileNavWindow.style.transform = 'translate(-50%, -50%)';
-        allThemeContainer.style.filter = "blur(0)"
-        containerTitle.style.filter = "blur(0)";
+        mainIntroDiv.style.filter = "blur(0)"
     }
 
     // navigation closure
@@ -95,19 +104,17 @@
     })
 
     // "about" segment opening 
+    about.addEventListener('click',()=>{
+        aboutContent.style.display = 'block'
+        mainIntroDiv.style.filter = "blur(8px)"
+    })
+
+    // "about" closure function support
     const aboutWindowClosure = function(){
         aboutContent.style.display = 'none';
         aboutContent.style.transform = 'translate(-50%, -50%)';
-        allThemeContainer.style.filter = "blur(0)"
-        containerTitle.style.filter = "blur(0)";
+        mainIntroDiv.style.filter = "blur(0)"
     }
-
-    // "about" closure function support
-    about.addEventListener('click',()=>{
-        aboutContent.style.display = 'block'
-        allThemeContainer.style.filter = "blur(8px)"
-        containerTitle.style.filter = "blur(8px)";
-    })
 
     // "about" closure
     aboutClose.addEventListener('click', ()=>{
@@ -116,6 +123,7 @@
     })
 
     // mobile "about" opening
+    const aboutMobile = document.querySelector('.about-mobile')
     aboutMobile.addEventListener('click', ()=>{
         mobileNavWindow.style.display = 'none';
         mobileNavButton.style.transform = 'rotate(180deg)'
