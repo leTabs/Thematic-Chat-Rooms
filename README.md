@@ -5,5 +5,7 @@ different themes, such as music and art. Inside the chatrooms, the users can int
 real-time conversations.
 
 It was created mainly by Python and takes advantage of sockets.
+
 Consult the Thematic Chatrooms Documentation for more information: 
-https://github.com/leTabs/Thematic-Chat-Rooms/blob/main/Thematic%20Chattrooms%20Documentation.pdf
+
+https://github.com/leTabs/Thematic-Chat-Rooms/blob/main/Thematic%20Chatrooms%20Documentation.pdf
